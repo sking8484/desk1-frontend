@@ -36,3 +36,7 @@ a:hover {
 .text {
   font-size: 2.5vmin
 }
+
+.underline {
+  text-decoration: underline;
+}
