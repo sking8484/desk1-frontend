@@ -1,0 +1,20 @@
+.homeInfo {
+  display: flex;
+  flex-direction: column;
+  color: #014f86;
+
+}
+
+.title {
+  font-weight: 700;
+  margin-top: -27vh;
+}
+
+.infoHeader {
+  font-size: large;
+  padding-bottom: 20vh;
+}
+
+.info {
+  padding-bottom: 5vh;
+}

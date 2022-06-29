@@ -1,0 +1,10 @@
+.homeContainer {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+}
+
+.homeContainer {
+  min-height: 95vh;
+  justify-items: center;
+  align-items: center;
+}
