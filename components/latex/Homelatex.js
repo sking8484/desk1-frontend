@@ -50,7 +50,7 @@ export default function Homelatex() {
       </Latex>
       <br/>
       <Latex>
-        $\lambda =$ A leverage dial with $\lambda > 1$ means leverage of $\lambda-1$
+        $\lambda =$ A leverage dial with $\lambda \\geq 1$ means leverage of $\lambda-1$
       </Latex>
       <br/>
       <Latex>
