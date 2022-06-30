@@ -11,6 +11,7 @@ import Homelatex from '../components/latex/Homelatex';
 export default function Home(props) {
 
   var width = (8/10)*(7/10);
+  var height = (8/10)*(8/10);
   var data = {"data":props.data}
 
   return(
@@ -20,7 +21,7 @@ export default function Home(props) {
       <Hometitle/>
     </div>
     <div className = {styles.homePerf}>
-      <Chart specObj = {spec} propsData = {data} widthMult = {width}/>
+      <Chart specObj = {spec} propsData = {data} widthMult = {width} heightMult = {height}/>
     </div>
   </div>
   <Homelatex/>
@@ -36,6 +37,6 @@ export async function getStaticProps() {
   return {
     props : {
       data
-    },revalidate:60*3
+    }
   }
 }
