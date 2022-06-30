@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 import Hometitle from '../components/layout/Hometitle'
 import getAllData from '../utils/database/db-utils'
-import Chart from '../components/Chart'
+import Chart from '../components/Charts/Chart'
 import spec from '../components/Charts/Specs/indexSpec'
 
 export default function Home(props) {
