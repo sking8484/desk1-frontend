@@ -12,6 +12,7 @@ export default function Chart({specObj, propsData, widthMult}) {
       height:window.innerHeight
     })
     window.addEventListener('resize',() => {
+
       clearTimeout(timeOutFunctionId);
       var timeOutFunctionId = setTimeout(() => {
           setDimensions({
@@ -24,6 +25,9 @@ export default function Chart({specObj, propsData, widthMult}) {
     })
   }, [])
 
+  if (dimension.width < 500) {
+    widthMult = (8/10)*widthMult;
+  }
   specObj = {
     ...specObj,
     width:(dimension.width*widthMult),
