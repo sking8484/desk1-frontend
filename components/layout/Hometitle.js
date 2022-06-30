@@ -9,9 +9,9 @@ export default function Hometitle() {
       A multi-dimensional approach to trading
     </div>
     <div className = {styles.info}>
-      <a href = 'https://cvxopt.org/index.html' className = 'third-title underline'>Quadratic Programming</a>
+      <a href = "https://cvxopt.org/index.html" className = 'third-title underline'>Quadratic Programming</a>
       <br/>
-      <div className = 'text'>DeskOne's main engine for portfolio construction</div>
+      <div className = 'text'>{"DeskOne's main engine for portfolio construction"}</div>
     </div>
   </div>
 }
