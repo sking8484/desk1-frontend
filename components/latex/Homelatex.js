@@ -8,7 +8,13 @@ export default function Homelatex() {
       The Equation We are Solving
       <br/>
       <div className = 'large-title'>
-        <Latex>$h^t\Sigma h - h^t\mu$</Latex>
+        <Latex displayMode={true}>
+          {`$$\\begin{equation}
+              \\begin{split}
+                h^t\\Sigma h - h^t\\mu
+              \\end{split}
+            \\end{equation}$$`}
+        </Latex>
       </div>
     </div>
     <p className = 'text'>
