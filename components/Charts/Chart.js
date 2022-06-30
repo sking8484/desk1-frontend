@@ -26,7 +26,7 @@ export default function Chart({specObj, propsData, widthMult}) {
   }, [])
 
   if (dimension.width < 500) {
-    widthMult = (8/10)*widthMult;
+    widthMult = (5/10)*widthMult;
   }
   specObj = {
     ...specObj,
