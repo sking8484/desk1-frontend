@@ -29,7 +29,7 @@ export default function Chart({specObj, propsData, widthMult}) {
     width:(dimension.width*widthMult),
   }
   return (
-    <VegaLite spec = {specObj} data = {propsData} />
+    <VegaLite spec = {specObj} data = {propsData} actions = {false} />
   )
 
 }
