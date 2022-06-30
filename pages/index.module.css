@@ -4,7 +4,7 @@
 }
 
 .homeContainer {
-  min-height: 95vh;
+  min-height: 90vh;
   justify-items: center;
   align-items: center;
 }
@@ -13,4 +13,16 @@
   padding-left: 3vw;
   padding-right: 3vw;
   padding-top: 3vh;
+}
+
+.latexContainer {
+  background-color: #014f86;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
