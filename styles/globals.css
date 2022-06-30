@@ -21,7 +21,10 @@ a:hover {
   text-decoration: underline;
 
 }
-
+.large-title {
+  font-size: 7vmin;
+  font-weight: 700;
+}
 .title {
   font-size: 5vmin;
   font-weight: 700;

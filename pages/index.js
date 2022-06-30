@@ -3,13 +3,19 @@ import Hometitle from '../components/layout/Hometitle'
 import getAllData from '../utils/database/db-utils'
 import Chart from '../components/Charts/Chart'
 import spec from '../components/Charts/Specs/indexSpec'
+import Homelatex from '../components/latex/Homelatex';
+
+
+
 
 export default function Home(props) {
 
   var width = (8/10)*(7/10);
   var data = {"data":props.data}
 
-  return <div className = {styles.homeContainer}>
+  return(
+  <>
+  <div className = {styles.homeContainer}>
     <div className = {styles.homeTitle}>
       <Hometitle/>
     </div>
@@ -17,6 +23,10 @@ export default function Home(props) {
       <Chart specObj = {spec} propsData = {data} widthMult = {width}/>
     </div>
   </div>
+  <Homelatex/>
+
+  </>
+  )
 }
 
 
