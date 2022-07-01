@@ -44,6 +44,11 @@ a:hover {
   font-weight: 400;
 }
 
+.small-text {
+  font-size: 2vmin;
+  font-weight: 400;
+}
+
 .underline {
   text-decoration: underline;
 }

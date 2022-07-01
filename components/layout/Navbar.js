@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className = {`${styles.option_container}`}>
         <ul className = {styles.option_list}>
           <li>
-            <Link href = '/'>
+            <Link href = '/performance'>
               <a>Performance</a>
             </Link>
           </li>
