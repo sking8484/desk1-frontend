@@ -12,7 +12,6 @@ export default function Homelatex() {
       $$`
   const qpConstraint2 = `
   $$h_n \\geq 0, \\forall_n$$`
-  console.log(qpFormula);
   return (
   <div className = {styles.latexContainer}>
     <div className = 'second-title'>
