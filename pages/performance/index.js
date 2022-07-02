@@ -17,11 +17,10 @@ export default function Performance(props) {
   let cols = getCols(indexed, 'date');
 
   const [data, setData] = React.useState(newIndexed);
-  console.log(data);
   homePerfSpec.repeat = {"layer":cols}
 
 
-  console.log('rerendering from top');
+
   function submitDates(event) {
     event.preventDefault();
 
@@ -44,14 +43,14 @@ export default function Performance(props) {
     var newFilteredData = [];
     for (var row in indexed) {
       var currRow = indexed[row];
-      if (currRow['date'] > startDate && currRow['date'] < endDate) {
+      if (currRow['date'] >= startDate && currRow['date'] < endDate) {
         newFilteredData.push(currRow);
       }
     }
     let newIndexed = indexToOne(newFilteredData, 'date');
 
     setData(newIndexed);
-    console.log('rerendering2');
+
   }
 
 
@@ -71,6 +70,8 @@ export async function getStaticProps(){
   let factorTable = 'factorTable';
   let perfData = await getAllData(perfTable);
   let factorData = await getAllData(factorTable);
+  var symbolsToKeep = ['OEF', 'oilWTI'];
+  factorData = factorData.filter(v => symbolsToKeep.includes(v.symbol));
 
   return {
     props : {

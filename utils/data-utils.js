@@ -1,4 +1,10 @@
 export function changeToCumulative(data, valueColumn) {
+  // This function aims to turn a change series to
+  // a cumulative series
+
+  // data -> array of objects
+  // valueColumn -> string, column to change
+
   var returnArray = [];
   for (var i = 0; i < data.length; i++) {
     var currObj = data[i];
@@ -12,6 +18,7 @@ export function changeToCumulative(data, valueColumn) {
     }
     returnArray.push(newObj);
   }
+
   return returnArray;
 }
 
@@ -21,6 +28,9 @@ export function concatData(data1, data2) {
 }
 
 export function pivotData(data, pivotIndex, pivotColumn, pivotData) {
+  // This function aims to pivot data from
+  // tidy data (three columns (index:pivotIndex, identifier:pivotColumn, data:pivotData))
+  // and changes this into time series like data
   var returnArray = [];
   let pivotObj = {};
   for (var i = 0; i < data.length; i++) {
@@ -47,6 +57,7 @@ export function pivotData(data, pivotIndex, pivotColumn, pivotData) {
 }
 
 export function sortTimeSeries(data, columnToSort) {
+  // self explanatory
   var dateObjData = data.map(v => {
     let newObj = {...v
     }
@@ -60,7 +71,7 @@ export function sortTimeSeries(data, columnToSort) {
 }
 
 export function indexToOne(data, indexCol, valsToReplace) {
-
+  // This function indexes the values of an object to 1
   var firstVals = {};
   var returnVals = [];
   for (var index in data) {
@@ -87,6 +98,7 @@ export function indexToOne(data, indexCol, valsToReplace) {
 }
 
 export function getCols(data, colsToRemove) {
+  // return the columns of an object
   var columns = [];
   for (var index in data) {
     var rowObj = data[index];

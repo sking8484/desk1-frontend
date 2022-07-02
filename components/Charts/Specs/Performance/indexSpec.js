@@ -7,12 +7,12 @@ homePerfSpec.spec = {
   "encoding":{
     "x":{
       "field":"date",
-      "timeUnit":"yearmonthdate"
+      "timeUnit":"yearmonthdate",
     },
     "y":{
       "field":{"repeat":"layer"},
       "type":"quantitative",
-      "scale":{"zero":false}
+      "scale":{"zero":false},
     },
     "color":{
       "datum":{"repeat":"layer"},
