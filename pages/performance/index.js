@@ -4,20 +4,28 @@ import Dateform from '../../components/Forms/Dateform'
 import getAllData from '../../utils/database/db-utils'
 import Chart from '../../components/Charts/Chart'
 import { homePerfSpec } from '../../components/Charts/Specs/Performance/indexSpec'
+import { concatData, pivotData, changeToCumulative, indexToOne, sortTimeSeries, getCols } from '../../utils/data-utils'
 
 export default function Performance(props) {
 
-  const [dates, setDates] = React.useState({
-    startDate : "",
-    endDate : "" //new Date().toISOString().substring(0,10)
-  })
+  let perfCumulative = changeToCumulative(props.perfData, 'value');
+  var concatedData = concatData(props.factorData, perfCumulative)
+  let pivotedData = pivotData(concatedData, 'date', 'symbol', 'value')
+  let sortedData = sortTimeSeries(pivotedData, 'date');
+  let indexed = indexToOne(sortedData, 'date');
 
-  function submitDates() {
+  let cols = getCols(indexed, 'date');
+
+  homePerfSpec.repeat = {"layer":cols}
+
+  const [data, setData] = React.useState(indexed);
+
+  async function submitDates(event) {
     event.preventDefault();
-    var startDate = new Date(dates.startDate)
-    var endDate = new Date(dates.endDate);
 
-    if (dates.endDate === '') {
+    var startDate = new Date(event.target[0].value)
+    var endDate = new Date(event.target[1].value);
+    if (event.target[1].value === '') {
       endDate = new Date()
     }
 
@@ -26,48 +34,22 @@ export default function Performance(props) {
       endDate = new Date();
     }
 
-    startDate = startDate.toISOString();
-    endDate = endDate.toISOString();
 
-    var startYear = parseInt(startDate.slice(0,4));
-    var startMonth = parseInt(startDate.slice(5,7))
-    var startDay = parseInt(startDate.slice(8,10));
-
-
-    var endYear = parseInt(endDate.slice(0,4));
-    var endMonth = parseInt(endDate.slice(5,7))
-    var endDay = parseInt(endDate.slice(8,10));
-
-    console.log(startDate);
-    homePerfSpec.transform = [
-      {"filter":
-        {"field": "date", "range": [
-          {"year": startYear, "month": startMonth, "date": startDay},
-          {"year": 2023, "month": "feb", "date": 20}
-        ]
-      }
-    }]
-    setDates({
-      startDate:"",
-      endDate:""
+    let indexedVal = indexed.slice(0,indexed.length).filter(row => {
+      return row.date > startDate && row.date < endDate;
     })
+    let newIndexed = indexToOne(indexedVal, 'date');
+
+    setData(newIndexed);
   }
 
-  function linkDates(event) {
-    const { value, name } = event.target;
-    setDates((prevDates) => {
-      return {
-        ...prevDates,
-        [name]:value
-      }
-    })
-  }
-  console.log(homePerfSpec);
+
+
   return <Gridcontainer>
-      <Dateform dates = {dates} linkDates = {linkDates} submit = {submitDates}/>
+      <Dateform submit = {submitDates}/>
       <Chart
         specObj = {homePerfSpec}
-        dataObj = {{"data":props.perfData}}
+        dataObj = {{"data":data}}
         widthMult = {8/10}
         heightMult = {7/10}/>
     </Gridcontainer>
@@ -75,12 +57,13 @@ export default function Performance(props) {
 
 export async function getStaticProps(){
   let perfTable = 'perfTable';
-  let factorTable = '';
+  let factorTable = 'factorTable';
   let perfData = await getAllData(perfTable);
+  let factorData = await getAllData(factorTable);
 
   return {
     props : {
-      perfData
+      perfData, factorData
     }, revalidate:60*30
   }
 
