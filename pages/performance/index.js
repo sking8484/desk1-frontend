@@ -13,14 +13,16 @@ export default function Performance(props) {
   let pivotedData = pivotData(concatedData, 'date', 'symbol', 'value')
   let sortedData = sortTimeSeries(pivotedData, 'date');
   let indexed = indexToOne(sortedData, 'date');
-
+  let newIndexed = indexToOne(indexed, 'date');
   let cols = getCols(indexed, 'date');
 
+  const [data, setData] = React.useState(newIndexed);
+  console.log(data);
   homePerfSpec.repeat = {"layer":cols}
 
-  const [data, setData] = React.useState(indexed);
 
-  async function submitDates(event) {
+  console.log('rerendering from top');
+  function submitDates(event) {
     event.preventDefault();
 
     var startDate = new Date(event.target[0].value)
