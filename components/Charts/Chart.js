@@ -2,7 +2,7 @@ import {VegaLite} from 'react-vega';
 import React from 'react';
 import { Handler } from 'vega-tooltip';
 
-export default function Chart({specObj, propsData, widthMult, heightMult}) {
+export default function Chart({specObj, dataObj, widthMult, heightMult}) {
   const [dimension, setDimensions] = React.useState({height:100,width:100});
 
   React.useEffect(() => {
@@ -34,7 +34,7 @@ export default function Chart({specObj, propsData, widthMult, heightMult}) {
     height:(dimension.height*heightMult)
   }
   return (
-    <VegaLite spec = {specObj} data = {propsData} actions = {false} />
+    <VegaLite spec = {specObj} data = {dataObj} actions = {false} />
   )
 
 }

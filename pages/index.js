@@ -21,7 +21,7 @@ export default function Home(props) {
       <Hometitle/>
     </div>
     <div className = {styles.homePerf}>
-      <Chart specObj = {spec} propsData = {data} widthMult = {width} heightMult = {height}/>
+      <Chart specObj = {spec} dataObj = {data} widthMult = {width} heightMult = {height}/>
     </div>
   </div>
   <Homelatex/>
