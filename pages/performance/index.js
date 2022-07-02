@@ -34,13 +34,22 @@ export default function Performance(props) {
       endDate = new Date();
     }
 
-
-    let indexedVal = indexed.slice(0,indexed.length).filter(row => {
+    /*
+    let indexedVal = [...indexed].filter(row => {
       return row.date > startDate && row.date < endDate;
     })
-    let newIndexed = indexToOne(indexedVal, 'date');
+    */
+    var newFilteredData = [];
+    for (var row in indexed) {
+      var currRow = indexed[row];
+      if (currRow['date'] > startDate && currRow['date'] < endDate) {
+        newFilteredData.push(currRow);
+      }
+    }
+    let newIndexed = indexToOne(newFilteredData, 'date');
 
     setData(newIndexed);
+    console.log('rerendering2');
   }
 
 

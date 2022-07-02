@@ -4,7 +4,7 @@ import { Handler } from 'vega-tooltip';
 
 export default function Chart({specObj, dataObj, widthMult, heightMult}) {
   const [dimension, setDimensions] = React.useState({height:100,width:100});
-  console.log(dataObj);
+
   React.useEffect(() => {
     setDimensions({
       ...dimension,
