@@ -45,8 +45,8 @@ export default function Performance(props) {
         newFilteredData.push(currRow);
       }
     }
-    let newDataIndexed = await indexToOne(newFilteredData, 'date')
-    setData(newDataIndexed);
+
+    setData(indexToOne(newFilteredData, 'date'));
   }
 
   return <Gridcontainer>
@@ -55,7 +55,8 @@ export default function Performance(props) {
         specObj = {homePerfSpec}
         dataObj = {{"data":myData}}
         widthMult = {8/10}
-        heightMult = {7/10}/>
+        heightMult = {7/10}
+        key = {myData}/>
     </Gridcontainer>
 }
 
