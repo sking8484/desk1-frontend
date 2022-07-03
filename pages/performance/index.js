@@ -8,20 +8,17 @@ import { concatData, pivotData, changeToCumulative, indexToOne, sortTimeSeries, 
 
 export default function Performance(props) {
 
-  let perfCumulative = changeToCumulative(props.perfData, 'value');
-  var concatedData = concatData(props.factorData, perfCumulative)
-  let pivotedData = pivotData(concatedData, 'date', 'symbol', 'value')
-  let sortedData = sortTimeSeries(pivotedData, 'date');
-  let indexed = indexToOne(sortedData, 'date');
-  let newIndexed = indexToOne(indexed, 'date');
-  let cols = getCols(indexed, 'date');
+  const [myData, setData] = React.useState(props.indexedData);
 
-  const [data, setData] = React.useState(newIndexed);
-  homePerfSpec.repeat = {"layer":cols}
+
+  React.useEffect(() => {
+    let cols = getCols(props.indexedData, 'date');
+    homePerfSpec.repeat = {"layer":cols}
+  }, [])
 
 
 
-  function submitDates(event) {
+  async function submitDates(event) {
     event.preventDefault();
 
     var startDate = new Date(event.target[0].value)
@@ -41,25 +38,22 @@ export default function Performance(props) {
     })
     */
     var newFilteredData = [];
-    for (var row in indexed) {
-      var currRow = indexed[row];
-      if (currRow['date'] >= startDate && currRow['date'] < endDate) {
+    for (var row in props.indexedData) {
+      var currRow = props.indexedData[row];
+      var date = new Date(currRow['date']);
+      if (date >= startDate && date < endDate) {
         newFilteredData.push(currRow);
       }
     }
-    let newIndexed = indexToOne(newFilteredData, 'date');
-
-    setData(newIndexed);
-
+    let newDataIndexed = await indexToOne(newFilteredData, 'date')
+    setData(newDataIndexed);
   }
-
-
 
   return <Gridcontainer>
       <Dateform submit = {submitDates}/>
       <Chart
         specObj = {homePerfSpec}
-        dataObj = {{"data":data}}
+        dataObj = {{"data":myData}}
         widthMult = {8/10}
         heightMult = {7/10}/>
     </Gridcontainer>
@@ -73,9 +67,16 @@ export async function getStaticProps(){
   var symbolsToKeep = ['OEF', 'oilWTI'];
   factorData = factorData.filter(v => symbolsToKeep.includes(v.symbol));
 
+  let perfCumulative = changeToCumulative(perfData, 'value');
+  var concatedData = concatData(factorData, perfCumulative)
+  let pivotedData = pivotData(concatedData, 'date', 'symbol', 'value')
+  let sortedData = sortTimeSeries(pivotedData, 'date');
+  let indexedData = indexToOne(sortedData, 'date');
+  indexedData = indexedData.map(v => ({...v, 'date':v['date'].toISOString().slice(0,10)}))
+
   return {
     props : {
-      perfData, factorData
+      indexedData
     }, revalidate:60*30
   }
 
