@@ -1,11 +1,10 @@
-import Gridcontainer from '../../components/layout/Gridcontainer'
 import React from 'react';
 import Dateform from '../../components/Forms/Dateform'
 import getAllData from '../../utils/database/db-utils'
 import Chart from '../../components/Charts/Chart'
 import { homePerfSpec } from '../../components/Charts/Specs/Performance/indexSpec'
 import { concatData, pivotData, changeToCumulative, indexToOne, sortTimeSeries, getCols } from '../../utils/data-utils'
-
+import styles from './index.module.css'
 export default function Performance(props) {
 
   const [myData, setData] = React.useState(props.indexedData);
@@ -49,15 +48,18 @@ export default function Performance(props) {
     setData(indexToOne(newFilteredData, 'date'));
   }
 
-  return <Gridcontainer>
-      <Dateform submit = {submitDates}/>
-      <Chart
-        specObj = {homePerfSpec}
-        dataObj = {{"data":myData}}
-        widthMult = {8/10}
-        heightMult = {7/10}
-        key = {myData}/>
-    </Gridcontainer>
+  return (
+      <div className = {styles.perfContainer}>
+        <Dateform submit = {submitDates}/>
+        <Chart
+          specObj = {homePerfSpec}
+          dataObj = {{"data":myData}}
+          widthMult = {8/10}
+          heightMult = {7/10}
+          key = {myData}/>
+      </div>
+
+  )
 }
 
 export async function getStaticProps(){

@@ -1,5 +1,4 @@
-
-.Gridcontainer{
+.perfContainer {
   display: grid;
   grid-template-rows: 1fr 9fr;
   min-height: 90vh;

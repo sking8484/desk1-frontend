@@ -1,0 +1,15 @@
+.Linebreak {
+  height: .6vh;
+  width: 95vw;
+  background-color: #014f86;
+  border-radius: 30px;
+}
+
+.breakContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+
+}

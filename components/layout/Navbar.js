@@ -19,8 +19,8 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href = '/'>
-            Positioning
+            <Link href = '/positioning'>
+              <a>Positioning</a>
             </Link>
           </li>
         </ul>

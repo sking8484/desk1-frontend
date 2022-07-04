@@ -27,13 +27,16 @@ export default function Chart({specObj, dataObj, widthMult, heightMult}) {
 
   if (dimension.width < 500) {
     widthMult = (5/10)*widthMult;
+
   }
   specObj = {
     ...specObj,
     width:(dimension.width*widthMult),
     height:(dimension.height*heightMult)
   }
-  console.log(specObj);
+
+  console.log(specObj.height);
+
   return (
     <VegaLite spec = {specObj} data = {dataObj} actions = {false} />
   )
