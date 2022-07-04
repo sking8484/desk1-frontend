@@ -35,6 +35,16 @@ export default function Chart({specObj, dataObj, widthMult, heightMult}) {
     height:(dimension.height*heightMult)
   }
 
+  if ('config' in specObj) {
+    let configObj = specObj['config'];
+    if ('legend' in specObj) {
+      let legendObj = configObj['legend']
+      legendObj['orient'] = 'top-left'
+    }
+    configObj['legend'] = {'orient':"top-left"}
+  }
+  specObj['config'] = {"legend":{"orient":"top-left"}}
+
   console.log(specObj.height);
 
   return (
