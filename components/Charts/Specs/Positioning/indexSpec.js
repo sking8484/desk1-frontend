@@ -3,7 +3,8 @@ indivSpec.mark = 'bar';
 
 indivSpec.encoding = {
   "x":{"field":"symbol","type":"nominal", "sort":"-y", "title":"Symbol"},
-  "y":{"field":"Portfolio Weight","type":"quantitative"}
+  "y":{"field":"Portfolio Weight","type":"quantitative", "axis":{"format":".0%"}},
+  "tooltip":[{"field":"symbol"}, {"field":"Portfolio Weight", "format":".2%"}]
 }
 
 indivSpec.transform = [
@@ -26,7 +27,8 @@ sectorSpec.mark = 'bar';
 
 sectorSpec.encoding = {
   "x":{"field":"sector","type":"nominal", "sort":"-y","title":"Sector", "axis":{"labelAngle":"0"}},
-  "y":{"field":"SectorWeights","type":"quantitative"}
+  "y":{"field":"SectorWeights","type":"quantitative","title":"Sector Weights", "axis":{"format":".0%"}},
+  "tooltip":[{"field":"sector"}, {"field":"SectorWeights", "format":".2%"}]
 }
 
 sectorSpec.transform = [{"calculate":"split(datum.value, ' ')", "as":"sector"},

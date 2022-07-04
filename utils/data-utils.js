@@ -113,22 +113,21 @@ export function getCols(data, colsToRemove) {
   return columns;
 }
 
-export function addColumn(data1, keyCol, valueCol, data2, newColName) {
-  let weightObj = {}
-  let returnArray = [];
-
-  for (var i = 0; i < data1.length; i++) {
-    var currRow = data1[i];
-    weightObj[currRow[keyCol]] = currRow[valueCol];
+export function changeColumnNames(data, columnMaps) {
+  let returnData = [];
+  for (var i = 0; i < data.length; i++){
+    let currRow = data[i];
+    let newObj = {};
+    let newCol = '';
+    for (var colName in currRow) {
+      if (colName in columnMaps) {
+        newCol = columnMaps[colName];
+      } else {
+        newCol = colName;
+      }
+      newObj[newCol] = currRow[colName];
+    }
+    returnData.push(newObj);
   }
-  for (var i = 0; i < data2.length; i++) {
-    var currRow = data2[i];
-    let returnObj = {...currRow}
-    returnObj[newColName] = weightObj[currRow[keyCol]];
-    returnArray.push(returnObj);
-  }
-  console.log(returnArray);
-  return returnArray;
-
-
+  return returnData;
 }

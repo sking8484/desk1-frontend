@@ -3,11 +3,27 @@ import Dateform from '../../components/Forms/Dateform'
 import getAllData from '../../utils/database/db-utils'
 import Chart from '../../components/Charts/Chart'
 import { homePerfSpec } from '../../components/Charts/Specs/Performance/indexSpec'
-import { concatData, pivotData, changeToCumulative, indexToOne, sortTimeSeries, getCols } from '../../utils/data-utils'
+import { concatData, pivotData, changeToCumulative, indexToOne, sortTimeSeries, getCols, changeColumnNames } from '../../utils/data-utils'
 import styles from './index.module.css'
+
+let COL_MAPS = {
+  "oilWTI":"Oil (West Texas)",
+  "OEF":"SP100 Proxy (OEF)",
+  "pct_change":"DeskOne Portfolio"
+}
+
+
+
 export default function Performance(props) {
 
-  const [myData, setData] = React.useState(props.indexedData);
+  const [myData, setData] = React.useState(
+    indexToOne(
+      props.indexedData.filter(
+        v => new Date(v['date'])>=new Date('2020-01-01')
+        ),
+      'date'
+      )
+    );
 
 
   React.useEffect(() => {
@@ -73,10 +89,12 @@ export async function getStaticProps(){
   let perfCumulative = changeToCumulative(perfData, 'value');
   var concatedData = concatData(factorData, perfCumulative)
   let pivotedData = pivotData(concatedData, 'date', 'symbol', 'value')
-  let sortedData = sortTimeSeries(pivotedData, 'date');
-  let indexedData = indexToOne(sortedData, 'date');
+  let sortedData = sortTimeSeries(pivotedData, 'date')
+  let indexedData = sortedData
   indexedData = indexedData.map(v => ({...v, 'date':v['date'].toISOString().slice(0,10)}))
 
+  indexedData = changeColumnNames(indexedData, COL_MAPS)
+  console.log(indexedData);
   return {
     props : {
       indexedData

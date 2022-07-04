@@ -6,11 +6,11 @@ import Linebreak from '../../components/layout/Linebreak'
 export default function Positioning(props) {
   return (<div className = {styles.posContainer}>
     <div className = {styles.weightChartContainer}>
-      <Chart className = {styles.weightsChart} specObj = {indivSpec} dataObj = {{"data":props.weightsData}} widthMult = {8/10} heightMult = {7/10}/>
+      <Chart className = {styles.weightsChart} specObj = {indivSpec} dataObj = {{"data":props.weightsData}} widthMult = {8/10} heightMult = {5.5/10}/>
     </div>
     <Linebreak/>
     <div className = {styles.sectorWeightsContainer}>
-      <Chart className = {styles.weightsChart} specObj = {sectorSpec} dataObj = {{"data":props.sectorData}} widthMult = {8/10} heightMult = {7/10}/>
+      <Chart className = {styles.weightsChart} specObj = {sectorSpec} dataObj = {{"data":props.sectorData}} widthMult = {8/10} heightMult = {5.5/10}/>
     </div>
   </div>
   )

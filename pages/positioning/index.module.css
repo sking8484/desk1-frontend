@@ -1,12 +1,12 @@
 .weightChartContainer {
-  min-height: 90vh;
+  min-height: 75vh;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
 .sectorWeightsContainer {
-  min-height: 90vh;
+  min-height: 75vh;
   display: flex;
   align-items: flex-end;
   justify-content: center;
