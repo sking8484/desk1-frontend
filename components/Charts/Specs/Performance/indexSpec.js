@@ -26,7 +26,7 @@ homePerfSpec.spec = {
 
 
 homePerfSpec.data = {"name":"data"}
-
+homePerfSpec.config = {"legend": {"orient":"top-left"}}
 
 
 export {homePerfSpec};
