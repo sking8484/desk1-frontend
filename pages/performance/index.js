@@ -21,16 +21,9 @@ export default function Performance(props) {
       props.indexedData.filter(
         v => new Date(v['date'])>=new Date('2020-01-01')
         ),
-      'date'
+      'symbol','value'
       )
     );
-
-
-  React.useEffect(() => {
-    let cols = getCols(props.indexedData, 'date');
-    homePerfSpec.repeat = {"layer":cols}
-  }, [])
-
 
 
   async function submitDates(event) {
@@ -52,16 +45,11 @@ export default function Performance(props) {
       return row.date > startDate && row.date < endDate;
     })
     */
-    var newFilteredData = [];
-    for (var row in props.indexedData) {
-      var currRow = props.indexedData[row];
-      var date = new Date(currRow['date']);
-      if (date >= startDate && date < endDate) {
-        newFilteredData.push(currRow);
-      }
-    }
+    let newFilteredData = props.indexedData.filter(row => {
+      return new Date(row.date) > startDate && new Date(row.date) < endDate;
+    })
 
-    setData(indexToOne(newFilteredData, 'date'));
+    setData(indexToOne(newFilteredData, 'symbol','value'));
   }
 
   return (
@@ -88,13 +76,11 @@ export async function getStaticProps(){
 
   let perfCumulative = changeToCumulative(perfData, 'value');
   var concatedData = concatData(factorData, perfCumulative)
-  let pivotedData = pivotData(concatedData, 'date', 'symbol', 'value')
-  let sortedData = sortTimeSeries(pivotedData, 'date')
-  let indexedData = sortedData
+  let sortedData = sortTimeSeries(concatedData, 'date')
+  let indexedData = indexToOne(sortedData, 'symbol','value')
   indexedData = indexedData.map(v => ({...v, 'date':v['date'].toISOString().slice(0,10)}))
 
-  indexedData = changeColumnNames(indexedData, COL_MAPS)
-  console.log(indexedData);
+  indexedData = changeColumnNames(indexedData, 'symbol', COL_MAPS)
   return {
     props : {
       indexedData

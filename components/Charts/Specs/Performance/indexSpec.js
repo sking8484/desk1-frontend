@@ -1,28 +1,28 @@
 var homePerfSpec = {}
-homePerfSpec.mark = 'line';
 
-homePerfSpec.repeat = {"layer":[]}
-homePerfSpec.spec = {
-  "mark":"line",
-  "encoding":{
+
+
+homePerfSpec.mark = 'line'
+homePerfSpec.encoding = {
     "x":{
       "field":"date",
       "timeUnit":"yearmonthdate",
     },
     "y":{
-      "field":{"repeat":"layer"},
+      "field":"value",
       "type":"quantitative",
       "scale":{"zero":false},
       "title":"Performance, Indexed to 1"
     },
     "color":{
-      "datum":{"repeat":"layer"},
+      "field":"symbol",
       "type":"nominal"
     },
-    "tooltip":[{"field":"Date (Formatted)"},{"datum":{"repeat":"layer"}},{"field":{"repeat":"layer"}, "format":".3"}, ]
-  },"transform":[{"calculate":"utcFormat(datum.date, '%b %d, %Y')","as":"Date (Formatted)"}]
+    "tooltip":[{"field":"Date (Formatted)"}, {"field":"symbol"},{"field":"value","format":".3"} ]
+  }
+homePerfSpec.transform=[{"calculate":"utcFormat(datum.date, '%b %d, %Y')","as":"Date (Formatted)"}]
 
-}
+
 
 
 homePerfSpec.data = {"name":"data"}

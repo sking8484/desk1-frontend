@@ -70,28 +70,26 @@ export function sortTimeSeries(data, columnToSort) {
   return filterObj;
 }
 
-export function indexToOne(data, indexCol, valsToReplace) {
+export function indexToOne(data, descriptorCol, valCol) {
   // This function indexes the values of an object to 1
   var firstVals = {};
   var returnVals = [];
+  var prevObj = {};
   for (var index in data) {
 
     var currObj = data[index];
-    if (index > 0) {
-      var prevOb = data[index - 1];
-    }
     var rowObj = {...currObj};
-    for (var colName in currObj) {
-      if (colName !== indexCol){
-        if (!(colName in firstVals)) {
-          firstVals[colName] = currObj[colName];
-        }
-        rowObj[colName] = currObj[colName]/firstVals[colName];
-        if (rowObj[colName] === 0) {
-          rowObj[colName] = prevObj[colName]/firstVals[colName];
-        }
-      }
+    var currRowDescriptor = rowObj[descriptorCol];
+    if (!(currRowDescriptor in firstVals)) {
+      firstVals[currRowDescriptor] = currObj[valCol];
     }
+
+    rowObj[valCol] = currObj[valCol]/firstVals[currRowDescriptor];
+
+    if (rowObj[valCol] === 0) {
+      rowObj[valCol] = prevObj[currRowDescriptor]/firstVals[currRowDescriptor];
+    }
+    prevObj[currRowDescriptor] = currObj[valCol];
     returnVals.push(rowObj);
   }
   return returnVals
@@ -113,20 +111,20 @@ export function getCols(data, colsToRemove) {
   return columns;
 }
 
-export function changeColumnNames(data, columnMaps) {
+export function changeColumnNames(data, colToChange, columnMaps) {
   let returnData = [];
   for (var i = 0; i < data.length; i++){
     let currRow = data[i];
-    let newObj = {};
+    let newObj = {...currRow};
     let newCol = '';
-    for (var colName in currRow) {
-      if (colName in columnMaps) {
-        newCol = columnMaps[colName];
-      } else {
-        newCol = colName;
-      }
-      newObj[newCol] = currRow[colName];
+
+    if (currRow[colToChange] in columnMaps) {
+      newCol = columnMaps[currRow[colToChange]];
+    } else {
+      newCol = currRow[colToChange];
     }
+    newObj[colToChange] = newCol;
+
     returnData.push(newObj);
   }
   return returnData;
