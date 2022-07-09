@@ -39,7 +39,7 @@ export default function Home(props) {
 
     </div>
     <div ref = {infoRef}>
-      <HomeInfo icon = {'chart'}/>
+      <HomeInfo/>
     </div>
     <div className = {styles.latexContainer} ref = {equationRef}>
       <Homelatex/>
