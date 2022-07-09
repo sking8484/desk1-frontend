@@ -2,19 +2,27 @@
   display: flex;
   flex-direction: column;
   color: #014f86;
-  margin-top: 10vh;
+  margin-top: 15vh;
+  align-items: flex-start;
+
+
 }
 
 .title {
   font-weight: 700;
-  margin-top: -30vh;
 }
 
 .infoHeader {
-  font-size: large;
   padding-bottom: 10vh;
 }
 
 .info {
-  padding-bottom: 5vh;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  padding: 10% 5%;
+  align-items: flex-start;
+  border-radius: 10px;
+  box-shadow: #014e86d0 2px 3px 4px;
+
 }

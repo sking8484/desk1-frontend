@@ -16,7 +16,7 @@ export default function Positioning(props) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   var weightsTable = 'holdingsTable';
   var topDownWeightsTable = 'topDownWeights';
 
@@ -29,7 +29,7 @@ export async function getStaticProps() {
     props : {
       weightsData,
       sectorData
-    }, revalidate:60*10
+    }
   }
 
 }

@@ -1,17 +1,19 @@
 import styles from './Hometitle.module.css'
-
-export default function Hometitle() {
-  return <div className = {styles.homeInfo}>
-    <div className = {`${styles.title} title`}>
-      DeskOne Trading
+import Link from 'next/link'
+export default function Hometitle(props) {
+  return (
+    <div className = {styles.homeInfo}>
+      <div className = {`${styles.title} title`}>
+        DeskOne Trading
+      </div>
+      <div className = {`${styles.infoHeader} text`}>
+        A multi-dimensional approach to trading.
+      </div>
+      <div className = {styles.scrollList}>
+        <p className = 'text-link' onClick = {() => props.scrollFunc('info')}>What is DeskOne?</p>
+        <p className = 'text-link' onClick = {() => props.scrollFunc('eq')}>Our Equation</p>
+      </div>
     </div>
-    <div className = {`${styles.infoHeader} second-title`}>
-      A multi-dimensional approach to trading
-    </div>
-    <div className = {styles.info}>
-      <a href = "https://cvxopt.org/index.html" className = 'third-title underline'>Quadratic Programming</a>
-      <br/>
-      <div className = 'text'>DeskOne&apos;s main engine for portfolio construction</div>
-    </div>
-  </div>
+  )
 }
+
