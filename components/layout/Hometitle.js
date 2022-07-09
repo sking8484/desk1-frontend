@@ -11,8 +11,8 @@ export default function Hometitle(props) {
       </div>
       <div className = {styles.scrollList}>
         <p className = 'text-link' onClick = {() => props.scrollFunc('info')}>What is DeskOne?</p>
-        <p className = 'text-link' onClick = {() => props.scrollFunc('perf')}>Our Performance</p>
         <p className = 'text-link' onClick = {() => props.scrollFunc('eq')}>Our Equation</p>
+        <p className = 'text-link' onClick = {() => props.scrollFunc('perf')}>Our Performance</p>
       </div>
     </div>
   )

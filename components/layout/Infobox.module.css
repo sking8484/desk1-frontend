@@ -1,0 +1,14 @@
+.boxContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 25vw;
+}
+
+.icon {
+  margin-bottom: 3vh;
+}
+
+.header {
+  margin-bottom: 2vh;
+}

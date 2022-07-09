@@ -14,17 +14,20 @@ export default function Home(props) {
 
   const equationRef = React.useRef(null);
   const infoRef = React.useRef(null);
+  const perfRef = React.useRef(null);
 
   function executeScroll(refIdent) {
     if (refIdent === 'eq') {
       equationRef.current.scrollIntoView();
     } else if (refIdent === 'info') {
       infoRef.current.scrollIntoView();
+    } else if (refIdent === 'perf') {
+      perfRef.current.scrollIntoView();
     }
   }
 
-  var width = (8/10)*(7/10);
-  var height = (8/10)*(8/10);
+  var width = (8/10);
+  var height = (8/10);
   var data = {"data":props.data}
 
   return(
@@ -33,16 +36,18 @@ export default function Home(props) {
       <div className = {styles.homeTitle}>
         <Hometitle scrollFunc = {executeScroll}/>
       </div>
-      <div className = {styles.homePerf}>
 
-      </div>
+    </div>
+    <div ref = {infoRef}>
+      <HomeInfo icon = {'chart'}/>
     </div>
     <div className = {styles.latexContainer} ref = {equationRef}>
       <Homelatex/>
     </div>
-    <div ref = {infoRef}>
-      <HomeInfo/>
+    <div ref = {perfRef} className = {styles.homePerf}>
+      <Chart specObj = {spec} dataObj = {data} widthMult = {width} heightMult = {height}/>
     </div>
+
   </>
   )
 }
