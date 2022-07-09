@@ -66,7 +66,7 @@ export default function Performance(props) {
   )
 }
 
-export async function getStaticProps(){
+export async function getServerSideProps(){
   let perfTable = 'perfTable';
   let factorTable = 'factorTable';
   let perfData = await getAllData(perfTable);
@@ -84,7 +84,7 @@ export async function getStaticProps(){
   return {
     props : {
       indexedData
-    }, revalidate:60*30
+    }
   }
 
 
