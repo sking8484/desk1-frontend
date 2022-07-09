@@ -1,28 +1,22 @@
 .homeInfo {
   display: flex;
   flex-direction: column;
-  color: #014f86;
-  margin-top: 15vh;
-  align-items: flex-start;
+  color: #e5e5e5;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: -5vh;
 
-
-}
-
-.title {
-  font-weight: 700;
 }
 
 .infoHeader {
   padding-bottom: 10vh;
 }
 
-.info {
-  height: 20vh;
+.scrollList {
   display: flex;
-  justify-content: center;
-  padding: 10% 5%;
-  align-items: flex-start;
-  border-radius: 10px;
-  box-shadow: #014e86d0 2px 3px 4px;
+  width: 50vw;
+  justify-content: space-around;
 
 }

@@ -1,6 +1,10 @@
 import '../styles/globals.css'
 import Navbar from '../components/layout/Navbar'
 import Head from 'next/head'
+import Footer from '../components/layout/Footer'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,6 +17,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Navbar />
       <Component {...pageProps} />
+      <Footer />
     </>
   )
 }

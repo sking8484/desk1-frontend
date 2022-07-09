@@ -2,6 +2,10 @@
 
 .infoContainer {
   width: 100vw;
-  height: 100vh;
-  color: #014f86;
+  height: 80vh;
+  color: #002046;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 30vh;
 }

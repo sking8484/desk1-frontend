@@ -1,0 +1,9 @@
+.footerContainer {
+  background-color: #002046;
+  font-size: xx-small;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

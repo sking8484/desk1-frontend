@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Hometitle(props) {
   return (
     <div className = {styles.homeInfo}>
-      <div className = {`${styles.title} title`}>
+      <div className = {`large-title`}>
         DeskOne Trading
       </div>
       <div className = {`${styles.infoHeader} text`}>
@@ -12,6 +12,7 @@ export default function Hometitle(props) {
       <div className = {styles.scrollList}>
         <p className = 'text-link' onClick = {() => props.scrollFunc('info')}>What is DeskOne?</p>
         <p className = 'text-link' onClick = {() => props.scrollFunc('eq')}>Our Equation</p>
+        <p className = 'text-link' onClick = {() => props.scrollFunc('perf')}>Our Performance</p>
       </div>
     </div>
   )
