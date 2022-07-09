@@ -6,6 +6,8 @@ body {
   margin: 0;
   font-family: 'Raleway';
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  color: #e5e5e5;
 }
 
 a {

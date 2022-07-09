@@ -34,7 +34,7 @@ export default function Home(props) {
         <Hometitle scrollFunc = {executeScroll}/>
       </div>
       <div className = {styles.homePerf}>
-        <Chart specObj = {spec} dataObj = {data} widthMult = {width} heightMult = {height}/>
+
       </div>
     </div>
     <div className = {styles.latexContainer} ref = {equationRef}>

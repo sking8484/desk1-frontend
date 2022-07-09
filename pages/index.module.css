@@ -1,13 +1,16 @@
 .homeContainer {
-  display: grid;
-  grid-template-columns: 3fr 7fr;
-}
-
-.homeContainer {
-  min-height: 90vh;
-  justify-items: center;
+  background: url('/Desk1Background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   align-items: center;
 }
+
+
 
 .homeTitle {
   padding-left: 3vw;

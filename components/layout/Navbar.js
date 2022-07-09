@@ -15,7 +15,7 @@ export default function Navbar() {
         <ul className = {styles.option_list}>
           <li>
             <Link href = '/performance'>
-              <a>Performance</a>
+              <a>Relative Performance</a>
             </Link>
           </li>
           <li>

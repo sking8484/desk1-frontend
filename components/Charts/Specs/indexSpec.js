@@ -3,7 +3,7 @@ var spec1 = {}
 spec1.mark = {
   "type":"area",
   "line":{
-    "color":"#014f86"
+    "color":"#002046"
   },
   "color": {
     "x1": 1,
@@ -18,7 +18,7 @@ spec1.mark = {
       },
       {
         "offset": 1,
-        "color": "#014f86"
+        "color": "#002046"
       }
     ]
   }
