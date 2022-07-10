@@ -8,7 +8,7 @@ export default function Pagestarter({pageInfo}) {
   */
 
   const descriptions = pageInfo['description'].map(text => (
-    <div className = {`${styles.description} third-title`}>
+    <div className = {`${styles.description} third-title`} key = {text[0]}>
       {text}
     </div>
   ))
