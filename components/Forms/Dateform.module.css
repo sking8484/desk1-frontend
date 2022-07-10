@@ -3,7 +3,7 @@
 .formContainer {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   height: 5vh;
 }
@@ -20,12 +20,19 @@
 
 .startDate, .endDate {
   height: 3vh;
-  width: 30vw;
+  width: 20vw;
   margin-right: 1vw;
   border-radius: 10px;
   border: solid #014f86 1px;
   color: #014f86;
 }
 
+.symbolSelector {
+  height: 5vh;
+  width: 20vw;
 
-
+  border-radius: 10px;
+  margin-right: 1vw;
+  border: solid #014f86 1px;
+  color: #002046;
+}

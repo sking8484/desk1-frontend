@@ -20,6 +20,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-latex": "^2.0.0",
+    "react-select": "^5.4.0",
     "react-vega": "^7.6.0",
     "serverless-mysql": "^1.5.4",
     "vega": "^5.22.1",
