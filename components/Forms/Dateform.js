@@ -31,6 +31,7 @@ export default function Dateform(props) {
     })
   }
 
+<<<<<<< HEAD
   let symbols = Array.from(new Set(props.data.map(v => v['symbol']))).sort()
   symbols.unshift("All")
 
@@ -57,6 +58,8 @@ export default function Dateform(props) {
       })
     }
 
+=======
+>>>>>>> 73d0246 (didnt make changes)
 
   return (
     <form className = {styles.formContainer} onSubmit = {filterForm}>

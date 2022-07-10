@@ -21,8 +21,14 @@ export default function ChartwithForm({data, spec, width, height}) {
       )
     );
 
+<<<<<<< HEAD
   async function submitInput(input) {
     console.log(input);
+=======
+  async function submitDates(input) {
+    event.preventDefault();
+    console.log(input)
+>>>>>>> 73d0246 (didnt make changes)
 
     var startDate = new Date(input['startDate'])
 
