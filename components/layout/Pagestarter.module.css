@@ -1,0 +1,26 @@
+.container {
+  background: url('/Desk1Background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 98vh;
+  justify-content: center;
+  text-align: left;
+  padding-left: 5vw;
+
+
+}
+
+.title {
+  width: 20%;
+  margin-top: -10vh;
+  margin-bottom: 5vh;
+}
+
+.description {
+  width: 30%;
+  margin-bottom: 5vh;
+}
