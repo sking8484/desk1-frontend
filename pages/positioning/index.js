@@ -8,7 +8,9 @@ export default function Positioning(props) {
 
   let pageDescription = {
     'title':"Positioning",
-    "description":["Why are we doing well? Scroll down to explore"]}
+    "description":[`Why are we doing well? Scroll down to explore our
+    current weights
+    `]}
   return (
     <>
       <Pagestarter pageInfo = {pageDescription}/>
