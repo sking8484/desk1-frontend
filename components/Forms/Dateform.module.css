@@ -10,22 +10,30 @@
 
 .dateButton {
   width: 10vw;
-  height: 3vh;
+  height: 37px;
   background-color: #002046;
-  border-radius: 10px;
+  border-radius: 30px;
   border: solid #002046 1px;
   color: white;
   cursor: pointer;
 }
 
 .startDate, .endDate {
-  height: 3vh;
-  width: 30vw;
+  height: 37px;
+  width: 20vw;
   margin-right: 1vw;
-  border-radius: 10px;
-  border: solid #014f86 1px;
-  color: #014f86;
+  border: solid rgb(178, 178, 178) 1px;
+  border-radius: 3px;
+
 }
 
+.selectBox {
+  width: 20vw;
+  margin-right: 1vw;
 
+}
 
+.inputBoxes {
+  display: flex;
+  color: black !important;
+}

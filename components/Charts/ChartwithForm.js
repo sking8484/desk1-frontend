@@ -21,12 +21,14 @@ export default function ChartwithForm({data, spec, width, height}) {
       )
     );
 
-  async function submitDates(event) {
-    event.preventDefault();
+  async function submitInput(input) {
+    console.log(input);
 
-    var startDate = new Date(event.target[0].value)
-    var endDate = new Date(event.target[1].value);
-    if (event.target[1].value === '') {
+    var startDate = new Date(input['startDate'])
+
+    var endDate = new Date(input['endDate']);
+    var symbols = input['symbols']
+    if (input['endDate'] === '') {
       endDate = new Date()
     }
 
@@ -41,7 +43,12 @@ export default function ChartwithForm({data, spec, width, height}) {
     })
     */
     let newFilteredData = data.filter(row => {
-      return new Date(row.date) > startDate && new Date(row.date) < endDate;
+      if (symbols.includes('All') || symbols.length === 0) {
+        return new Date(row.date) > startDate && new Date(row.date) < endDate;
+      } else {
+        return new Date(row.date) > startDate && new Date(row.date) < endDate && symbols.includes(row.symbol);
+      }
+
     })
 
     setData(indexToOne(newFilteredData, 'symbol','value'));
@@ -49,7 +56,7 @@ export default function ChartwithForm({data, spec, width, height}) {
 
   return (
     <div className = {styles.perfContainer}>
-      <Dateform submit = {submitDates}/>
+      <Dateform submit = {submitInput} data = {myData}/>
       <Chart
         specObj = {spec}
         dataObj = {{"data":myData}}
