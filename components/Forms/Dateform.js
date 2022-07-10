@@ -1,5 +1,7 @@
 import styles from './Dateform.module.css'
 import React from 'react'
+import Select from 'react-select'
+
 export default function Dateform(props) {
 
   const [formInput, setFormInput] = React.useState({
@@ -11,12 +13,16 @@ export default function Dateform(props) {
   const [symbolState, setSymbolState] = React.useState([]);
 
   function linkInput(event) {
-    let { value, name, selectedOptions } = event.target;
-    let options = Array.from(selectedOptions, option => option.value);
-
-    if (name === 'symbols') {
-      value = options;
+    var value = '';
+    var name = '';
+    if (Array.isArray(event)) {
+      value = event.map(v => v.value);
+      name = 'symbols'
+    } else {
+      value = event.target.value;
+      name = event.target.name;
     }
+
     setFormInput((prevDates) => {
       return {
         ...prevDates,
@@ -26,15 +32,27 @@ export default function Dateform(props) {
   }
 
   let symbols = Array.from(new Set(props.data.map(v => v['symbol']))).sort()
-  let symbolSelectors = symbols.map(symbol => (
-    <option key = {symbol} value = {`${symbol}`}>{`${symbol}`}</option>
-  ))
-  symbolSelectors.unshift(<option key = {'All'} value = "All">All</option>)
+  symbols.unshift("All")
+
+  let options = symbols.map(symbol => ({
+    value:symbol,
+    label:symbol
+  }))
+
+
   React.useEffect(() => (
-    setSymbolState(symbolSelectors)
+    setSymbolState(symbols)
   ),[])
+
+  function filterForm(event) {
+    event.preventDefault();
+    props.submit(formInput);
+  }
+
+
+
   return (
-    <form className = {styles.formContainer} onSubmit = {formInput => props.submit(formInput)}>
+    <form className = {styles.formContainer} onSubmit = {filterForm}>
       <div className = {styles.inputBoxes}>
         <input
           type = "text"
@@ -54,15 +72,15 @@ export default function Dateform(props) {
           value = {formInput.endDate}
           onChange = {linkInput}
         />
-        <select
-          defaultValue = {['All']}
+        <Select
+          options = {options}
+          instanceId = '2033150unique'
           name = 'symbols'
-          className = {styles.symbolSelector}
-          selected = {formInput.symbols}
-          onChange = {linkInput} multiple>
-            {symbolState}
-        </select>
+          isMulti
+          onChange = {linkInput}
+          className = {styles.selectBox}
 
+        />
       </div>
       <button className = {styles.dateButton}><div className = 'small-text'>Filter</div></button>
     </form>

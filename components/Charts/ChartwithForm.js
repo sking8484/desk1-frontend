@@ -21,14 +21,14 @@ export default function ChartwithForm({data, spec, width, height}) {
       )
     );
 
-  async function submitDates(event) {
+  async function submitInput(input) {
+    console.log(input);
 
-    event.preventDefault();
-    let symbols = (Array.from(event.target[2].selectedOptions, option => option.value))
+    var startDate = new Date(input['startDate'])
 
-    var startDate = new Date(event.target[0].value)
-    var endDate = new Date(event.target[1].value);
-    if (event.target[1].value === '') {
+    var endDate = new Date(input['endDate']);
+    var symbols = input['symbols']
+    if (input['endDate'] === '') {
       endDate = new Date()
     }
 
@@ -56,7 +56,7 @@ export default function ChartwithForm({data, spec, width, height}) {
 
   return (
     <div className = {styles.perfContainer}>
-      <Dateform submit = {submitDates} data = {myData}/>
+      <Dateform submit = {submitInput} data = {myData}/>
       <Chart
         specObj = {spec}
         dataObj = {{"data":myData}}
