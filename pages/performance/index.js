@@ -5,6 +5,8 @@ import Chart from '../../components/Charts/Chart'
 import { homePerfSpec } from '../../components/Charts/Specs/Performance/indexSpec'
 import { concatData, pivotData, changeToCumulative, indexToOne, sortTimeSeries, getCols, changeColumnNames } from '../../utils/data-utils'
 import styles from './index.module.css'
+import Pagestarter from '../../components/layout/Pagestarter'
+import ChartwithForm from '../../components/Charts/ChartwithForm'
 
 let COL_MAPS = {
   "oilWTI":"Oil (West Texas)",
@@ -12,56 +14,23 @@ let COL_MAPS = {
   "pct_change":"DeskOne Portfolio"
 }
 
-
-
 export default function Performance(props) {
 
-  const [myData, setData] = React.useState(
-    indexToOne(
-      props.indexedData.filter(
-        v => new Date(v['date'])>=new Date('2020-01-01')
-        ),
-      'symbol','value'
-      )
-    );
 
-
-  async function submitDates(event) {
-    event.preventDefault();
-
-    var startDate = new Date(event.target[0].value)
-    var endDate = new Date(event.target[1].value);
-    if (event.target[1].value === '') {
-      endDate = new Date()
+  const pageInfo = {'title':"Relative Performance",
+    "description":[
+      `We're doing well, but how do we compare? Scroll down to explore`,
+      `Data indexed to one from start date. This allows us to better compare two or more
+      series by starting both from one`
+      ]
     }
 
-    if (startDate.toString() === 'Invalid Date' || endDate.toString() === 'Invalid Date') {
-      startDate = new Date('1970-01-01');
-      endDate = new Date();
-    }
-
-    /*
-    let indexedVal = [...indexed].filter(row => {
-      return row.date > startDate && row.date < endDate;
-    })
-    */
-    let newFilteredData = props.indexedData.filter(row => {
-      return new Date(row.date) > startDate && new Date(row.date) < endDate;
-    })
-
-    setData(indexToOne(newFilteredData, 'symbol','value'));
-  }
 
   return (
-      <div className = {styles.perfContainer}>
-        <Dateform submit = {submitDates}/>
-        <Chart
-          specObj = {homePerfSpec}
-          dataObj = {{"data":myData}}
-          widthMult = {8/10}
-          heightMult = {7/10}
-          key = {myData}/>
-      </div>
+      <>
+        <Pagestarter pageInfo = {pageInfo}/>
+        <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {7/10}/>
+      </>
 
   )
 }
