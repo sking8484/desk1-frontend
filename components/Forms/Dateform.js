@@ -49,6 +49,13 @@ export default function Dateform(props) {
     props.submit(formInput);
   }
 
+    const customStyles = {
+      valueContainer: provided => ({
+        ...provided,
+        maxHeight:"30px",
+        overflowY:'scroll'
+      })
+    }
 
 
   return (
@@ -77,6 +84,7 @@ export default function Dateform(props) {
           instanceId = '2033150unique'
           name = 'symbols'
           isMulti
+          styles = {customStyles}
           onChange = {linkInput}
           className = {styles.selectBox}
 
