@@ -29,7 +29,7 @@ export default function Performance(props) {
   return (
       <>
         <Pagestarter pageInfo = {pageInfo}/>
-        <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {7/10}/>
+        <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10}/>
       </>
 
   )
