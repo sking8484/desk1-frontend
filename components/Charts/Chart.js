@@ -43,8 +43,13 @@ export default function Chart({specObj, dataObj, widthMult, heightMult}) {
       legendObj['orient'] = 'top-left'
     }
     configObj['legend'] = {'orient':"top-left"}
+
   }
-  specObj['config'] = {"legend":{"orient":"top-left", "title":null}}
+  specObj['config'] = {
+    "legend":{
+      "orient":"top-left", "title":null
+    },
+  }
 
   return (
     <VegaLite spec = {specObj} data = {dataObj} actions = {false} />

@@ -12,21 +12,14 @@ requires props to be passes a data element that is time series,
 */
 
 export default function ChartwithForm({data, spec, width, height, shouldIndex}) {
-  let myDataToSet = data
-  if (shouldIndex) {
-    let myDataToSet = indexToOne(
-      data.filter(
-        v => new Date(v['date'])>=new Date('2020-01-01')
-        ),
-      'symbol','value'
-      )
-  } else {
-    let myDataToSet = data.filter(
-      v => new Date(v['date'])>=new Date('2020-01-01')
-      )
-  }
-
-  const [myData, setData] = React.useState(myDataToSet);
+  console.log(shouldIndex);
+  const [myData, setData] = React.useState(
+    shouldIndex ? indexToOne(data.filter(
+      row => new Date(row['date']) >= new Date('2020-01-01')), 'symbol', 'value')
+    : data.filter(
+      row => new Date(row['date']) >= new Date('2020-01-01')
+    )
+  );
   async function submitInput(input) {
     console.log(input);
 
@@ -39,7 +32,7 @@ export default function ChartwithForm({data, spec, width, height, shouldIndex}) 
     }
 
     if (startDate.toString() === 'Invalid Date' || endDate.toString() === 'Invalid Date') {
-      startDate = new Date('1970-01-01');
+      startDate = new Date('2020-01-01');
       endDate = new Date();
     }
 
@@ -50,9 +43,9 @@ export default function ChartwithForm({data, spec, width, height, shouldIndex}) 
     */
     let newFilteredData = data.filter(row => {
       if (symbols.includes('All') || symbols.length === 0) {
-        return new Date(row.date) > startDate && new Date(row.date) < endDate;
+        return new Date(row.date) >= startDate && new Date(row.date) <= endDate;
       } else {
-        return new Date(row.date) > startDate && new Date(row.date) < endDate && symbols.includes(row.symbol);
+        return new Date(row.date) >= startDate && new Date(row.date) <= endDate && symbols.includes(row.symbol);
       }
 
     })

@@ -26,6 +26,7 @@
   border-radius: 3px;
   margin-bottom: 1vh;
   margin-top: 2vh;
+  color: #002046;
 
 }
 
@@ -39,7 +40,7 @@
 .inputBoxes {
   display: flex;
   flex-direction: column;
-  color: black !important;
+
   justify-content: flex-start;
   align-items: flex-end;
   height: 10vh;

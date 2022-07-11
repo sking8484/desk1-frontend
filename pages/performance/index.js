@@ -52,6 +52,7 @@ export async function getServerSideProps(){
   let perfCumulative = changeToCumulative(perfData, 'value');
   var concatedData = concatData(factorData, perfCumulative)
   let sortedData = sortTimeSeries(concatedData, 'date')
+
   let indexedData = indexToOne(sortedData, 'symbol','value')
   indexedData = indexedData.map(v => ({...v, 'date':v['date'].toISOString().slice(0,10)}))
 

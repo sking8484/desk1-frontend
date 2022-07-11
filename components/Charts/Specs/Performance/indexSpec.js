@@ -43,7 +43,7 @@ meanPerfSpec.encoding = {
     'axis':{
       'grid':'true',
       'labelAngle':0,
-      'title':"Symbol"
+      'title':"Symbol",
     }
   },
   'y':{
@@ -53,7 +53,8 @@ meanPerfSpec.encoding = {
       'format':'0.2%',
       'title':'Performance'
     }
-  }
+  },
+  'color':{'value':'#002046'}
 }
 
 meanPerfSpec.transform = [{
@@ -65,7 +66,7 @@ meanPerfSpec.transform = [{
 }]
 
 meanPerfSpec.data = {'name':'data'}
-meanPerfSpec.title = 'Mean Daily Performance'
+meanPerfSpec.title = {'text':'Mean Daily Performance'}
 export {meanPerfSpec}
 
 // Variance Chart
@@ -78,7 +79,8 @@ varPerfSpec.encoding = {
     'sort':'-y',
     'axis':{
       'grid':'true',
-      'labelAngle':0
+      'labelAngle':0,
+      'color':'#002046'
     },
     'title':'Symbol'
   },
@@ -89,7 +91,8 @@ varPerfSpec.encoding = {
       'format':'0.2%'
     },
     'title':'Variance'
-  }
+  },
+  'color':{'value':'#002046'}
 }
 
 varPerfSpec.transform = [{
@@ -101,5 +104,5 @@ varPerfSpec.transform = [{
 }]
 
 varPerfSpec.data = {'name':'data'}
-varPerfSpec.title = "Daily Variance"
+varPerfSpec.title = {'text':"Daily Variance"}
 export {varPerfSpec}
