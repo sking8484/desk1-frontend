@@ -10,10 +10,17 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <title>DeskOne Trading</title>
         <link
             href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
             rel="stylesheet"
         />
+        <meta property="og:title" content="DeskOne Trading"/>
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="A multi-dimensional approach to trading."/>
+        <meta property="og:image" content="/Desk1Background.jpg"/>
+        <meta property="og:url" content="deskonetrading.com"/>
+
       </Head>
       <Navbar />
       <Component {...pageProps} />
