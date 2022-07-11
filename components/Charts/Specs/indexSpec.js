@@ -24,9 +24,9 @@ spec1.mark = {
   }
 }
 spec1.encoding = {
-  "x":{"field":"date","timeUnit":"yearmonthdate"},
-  "y":{"field":"indexedPerf","type":"quantitative", "axis":{"format":".0%"}, "scale":{"zero":false}},
-  "tooltip":[{"field":"Date (Formatted)"},{"field":"indexedPerf", "format":".2%"}],
+  "x":{"field":"date","timeUnit":"yearmonthdate","title":"Date"},
+  "y":{"field":"indexedPerf","type":"quantitative", "axis":{"format":".1%"}, "scale":{"zero":false}, "title":"Cumulative Performance"},
+  "tooltip":[{"field":"Date (Formatted)"},{"field":"indexedPerf", "format":".3%"}],
 
 
 

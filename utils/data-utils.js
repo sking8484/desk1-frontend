@@ -129,3 +129,32 @@ export function changeColumnNames(data, colToChange, columnMaps) {
   }
   return returnData;
 }
+
+export function makeStationary(data, identifierColumn, valueColumn) {
+  /*
+
+  data = [
+    {date:'', identifierColumn:'', valueColumn:''},
+    {date:'', identifierColumn:'', valueColumn:''}
+  ]
+  */
+  let stationaryData = [];
+  let prevData = {};
+  for (var index in data){
+    let currRow = data[index];
+
+    if (!(currRow[identifierColumn] in prevData)) {
+      prevData[currRow[identifierColumn]] = currRow[valueColumn];
+    } else {
+      let currValue = currRow[valueColumn];
+      let prevValue = prevData[currRow[identifierColumn]];
+      let stationaryValue = currValue/prevValue - 1;
+      stationaryData.push({
+        ...currRow,
+        [valueColumn]:stationaryValue
+      })
+      prevData[currRow[identifierColumn]] = currRow[valueColumn];
+    }
+  }
+  return stationaryData;
+}

@@ -1,9 +1,9 @@
 var indivSpec = {}
-indivSpec.mark = 'bar';
+indivSpec.mark = {'type':'bar','cornerRadiusEnd':5};
 
 indivSpec.encoding = {
-  "x":{"field":"symbol","type":"nominal", "sort":"-y", "title":"Symbol"},
-  "y":{"field":"Portfolio Weight","type":"quantitative", "axis":{"format":".0%"}},
+  "x":{"field":"symbol","type":"nominal", "sort":"-y", "title":"Symbol",'axis':{'grid':true}},
+  "y":{"field":"Portfolio Weight","type":"quantitative", "axis":{"format":".1%"}},
   "tooltip":[{"field":"symbol"}, {"field":"Portfolio Weight", "format":".2%"}],
   "color":{"field":"Portfolio Weight", "type":"quantitative", "legend":null}
 }
@@ -24,10 +24,10 @@ indivSpec.background = null
 export {indivSpec};
 
 var sectorSpec = {}
-sectorSpec.mark = 'bar';
+sectorSpec.mark = {'type':'bar','cornerRadiusEnd':5};
 
 sectorSpec.encoding = {
-  "x":{"field":"sector","type":"nominal", "sort":"-y","title":"Sector", "axis":{"labelAngle":"0"}},
+  "x":{"field":"sector","type":"nominal", "sort":"-y","title":"Sector", "axis":{"labelAngle":"0", 'grid':"true"}},
   "y":{"field":"SectorWeights","type":"quantitative","title":"Sector Weights", "axis":{"format":".0%"}},
   "tooltip":[{"field":"sector"}, {"field":"SectorWeights", "format":".2%"}],
   "color":{"field":"SectorWeights","type":"quantitative","legend":null}

@@ -45,6 +45,9 @@ export default function Home(props) {
       <Homelatex/>
     </div>
     <div ref = {perfRef} className = {styles.homePerf}>
+      <div className = {'large-title'}>
+        Our Performance
+      </div>
       <Chart specObj = {spec} dataObj = {data} widthMult = {width} heightMult = {height}/>
     </div>
 

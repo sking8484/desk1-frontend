@@ -11,16 +11,22 @@ requires props to be passes a data element that is time series,
    'value':''}
 */
 
-export default function ChartwithForm({data, spec, width, height}) {
-  const [myData, setData] = React.useState(
-    indexToOne(
+export default function ChartwithForm({data, spec, width, height, shouldIndex}) {
+  let myDataToSet = data
+  if (shouldIndex) {
+    let myDataToSet = indexToOne(
       data.filter(
         v => new Date(v['date'])>=new Date('2020-01-01')
         ),
       'symbol','value'
       )
-    );
+  } else {
+    let myDataToSet = data.filter(
+      v => new Date(v['date'])>=new Date('2020-01-01')
+      )
+  }
 
+  const [myData, setData] = React.useState(myDataToSet);
   async function submitInput(input) {
     console.log(input);
 
@@ -51,7 +57,12 @@ export default function ChartwithForm({data, spec, width, height}) {
 
     })
 
-    setData(indexToOne(newFilteredData, 'symbol','value'));
+    if (shouldIndex) {
+      setData(indexToOne(newFilteredData, 'symbol','value'));
+    } else {
+      setData(newFilteredData);
+    }
+
   }
 
   return (

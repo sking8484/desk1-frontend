@@ -23,10 +23,16 @@ export default function Homeinfo() {
     Use the Navigation Bar (top of page) to explore these features
   `
   return (
-    <div className = {styles.infoContainer}>
-      <Infobox icon = {benchmarkIcon} header = {benchmarkHeader} description = {benchmarkDescription}/>
-      <Infobox icon = {weightsIcon} header = {weightsHeader} description = {weightsDescription}/>
-      <Infobox icon = {dataIcon} header = {dataHeader} description = {dataDescription}/>
+    <div className = {styles.info}>
+      <div className = {'large-title'}>
+        What is DeskOne?
+      </div>
+      <div className = {styles.infoContainer}>
+        <Infobox icon = {benchmarkIcon} header = {benchmarkHeader} description = {benchmarkDescription}/>
+        <Infobox icon = {weightsIcon} header = {weightsHeader} description = {weightsDescription}/>
+        <Infobox icon = {dataIcon} header = {dataHeader} description = {dataDescription}/>
+      </div>
     </div>
+
   )
 }

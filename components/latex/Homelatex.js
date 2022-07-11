@@ -14,24 +14,23 @@ export default function Homelatex() {
   $$h_n \\geq 0, \\forall_n$$`
   return (
   <div className = {styles.latexContainer}>
-    <div className = 'second-title'>
-      The Equation We are Solving
-      <br/>
-      <div className = 'large-title'>
-        <Latex>
-          {qpFormula}
-        </Latex>
-        <p className = 'text'>Given the following constraints</p>
-        <Latex>
-          {qpConstraint1}
-        </Latex>
-        <br/>
-        <Latex>
-          {qpConstraint2}
-        </Latex>
-      </div>
+    <div className = 'large-title'>
+      Our Equation
     </div>
-    <p className = 'text'>
+    <div className = 'large-title'>
+      <Latex>
+        {qpFormula}
+      </Latex>
+      <p className = 'text'>Given the following constraints</p>
+      <Latex>
+        {qpConstraint1}
+      </Latex>
+      <br/>
+      <Latex>
+        {qpConstraint2}
+      </Latex>
+    </div>
+    <div className = 'text'>
       where
       <br/>
       <Latex>
@@ -55,7 +54,7 @@ export default function Homelatex() {
       <Latex>
         $N =$ number of assets
       </Latex>
-    </p>
+    </div>
   </div>
   )
 }
