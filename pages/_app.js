@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>DeskOne Trading</title>
+        <link rel="icon" href="/favicon.ico" />
         <link
             href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
             rel="stylesheet"
