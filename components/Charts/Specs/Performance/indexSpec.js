@@ -7,6 +7,9 @@ homePerfSpec.encoding = {
     "x":{
       "field":"date",
       "timeUnit":"yearmonthdate",
+      'axis':{
+        'title':'Date'
+      }
     },
     "y":{
       "field":"value",
@@ -18,7 +21,10 @@ homePerfSpec.encoding = {
       "field":"symbol",
       "type":"nominal"
     },
-    "tooltip":[{"field":"Date (Formatted)"}, {"field":"symbol"},{"field":"value","format":".3"} ]
+    "tooltip":[
+      {"field":"Date (Formatted)", 'title':'Date'},
+      {"field":"symbol", 'title':"Symbol"},
+      {"field":"value","format":".3", 'title':'Performance'}]
   }
 homePerfSpec.transform=[{"calculate":"utcFormat(datum.date, '%b %d, %Y')","as":"Date (Formatted)"}]
 
@@ -37,13 +43,13 @@ var meanPerfSpec = {}
 meanPerfSpec.mark = {'type':"bar",'cornerRadius':5}
 meanPerfSpec.encoding = {
   'x':{
-    'field':'symbol',
+    'field':'fsymbol',
     'type':'nominal',
     'sort':'-y',
     'axis':{
       'grid':'true',
       'labelAngle':0,
-      'title':"Symbol",
+      'title':false,
     }
   },
   'y':{
@@ -51,18 +57,21 @@ meanPerfSpec.encoding = {
     'type':'quantitative',
     'axis':{
       'format':'0.2%',
-      'title':'Performance'
+      'title':false
     }
   },
-  'color':{'value':'#002046'}
+  'color':{'value':'#002046'},
+  'tooltip':[{'field':'meanPerformance','format':'0.2%','title':'Daily Performance'}]
 }
 
-meanPerfSpec.transform = [{
+meanPerfSpec.transform = [
+{'calculate':"split(datum.symbol, ' ')", 'as':'fsymbol'},
+{
   'aggregate':[{
     'op':'mean',
     'field':'value',
     'as':'meanPerformance'
-  }],'groupby':['symbol']
+  }],'groupby':['fsymbol']
 }]
 
 meanPerfSpec.data = {'name':'data'}
@@ -74,15 +83,16 @@ var varPerfSpec = {}
 varPerfSpec.mark = {'type':"bar",'cornerRadius':5}
 varPerfSpec.encoding = {
   'x':{
-    'field':'symbol',
+    'field':'fsymbol',
     'type':'nominal',
     'sort':'-y',
     'axis':{
       'grid':'true',
       'labelAngle':0,
-      'color':'#002046'
+      'color':'#002046',
+
     },
-    'title':'Symbol'
+    'title':false
   },
   'y':{
     'field':'perfVariance',
@@ -90,17 +100,20 @@ varPerfSpec.encoding = {
     'axis':{
       'format':'0.2%'
     },
-    'title':'Variance'
+    'title':false
   },
-  'color':{'value':'#002046'}
+  'color':{'value':'#002046'},
+  'tooltip':[{'field':'perfVariance', 'format':'0.2%', 'title':'Variance'}]
 }
 
-varPerfSpec.transform = [{
+varPerfSpec.transform = [
+  {'calculate':"split(datum.symbol, ' ')", 'as':'fsymbol'},
+  {
   'aggregate':[{
     'op':'variance',
     'field':'value',
     'as':'perfVariance'
-  }],'groupby':['symbol']
+  }],'groupby':['fsymbol']
 }]
 
 varPerfSpec.data = {'name':'data'}

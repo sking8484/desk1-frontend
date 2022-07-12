@@ -9,8 +9,9 @@ import Pagestarter from '../../components/layout/Pagestarter'
 import ChartwithForm from '../../components/Charts/ChartwithForm'
 
 let COL_MAPS = {
-  "oilWTI":"Oil (West Texas)",
-  "OEF":"SP100 Proxy (OEF)",
+  "SPY":"S&P500 (SPY)",
+  "OEF":"S&P100 (OEF)",
+  "URTH":"MSCI World (URTH)",
   "pct_change":"DeskOne Portfolio"
 }
 
@@ -32,8 +33,8 @@ export default function Performance(props) {
         <div className = {styles.charts}>
           <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true}/>
           <div className = {styles.mvCharts}>
-            <Chart dataObj = {{'data':props.stationaryData}} specObj = {meanPerfSpec} widthMult = {3.7/10} heightMult = {3/10}/>
-            <Chart dataObj = {{'data':props.stationaryData}} specObj = {varPerfSpec} widthMult = {3.7/10} heightMult = {3/10}/>
+            <Chart dataObj = {{'data':props.stationaryData}} specObj = {meanPerfSpec} widthMult = {3/10} heightMult = {3/10}/>
+            <Chart dataObj = {{'data':props.stationaryData}} specObj = {varPerfSpec} widthMult = {3/10} heightMult = {3/10}/>
           </div>
 
         </div>
@@ -46,7 +47,7 @@ export async function getServerSideProps(){
   let factorTable = 'factorTable';
   let perfData = await getAllData(perfTable);
   let factorData = await getAllData(factorTable);
-  var symbolsToKeep = ['OEF', 'oilWTI'];
+  var symbolsToKeep = ['OEF', 'SPY', 'URTH'];
   factorData = factorData.filter(v => symbolsToKeep.includes(v.symbol));
 
   let perfCumulative = changeToCumulative(perfData, 'value');

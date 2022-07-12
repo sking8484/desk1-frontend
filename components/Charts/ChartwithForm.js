@@ -12,7 +12,7 @@ requires props to be passes a data element that is time series,
 */
 
 export default function ChartwithForm({data, spec, width, height, shouldIndex}) {
-  console.log(shouldIndex);
+  console.log(data);
   const [myData, setData] = React.useState(
     shouldIndex ? indexToOne(data.filter(
       row => new Date(row['date']) >= new Date('2020-01-01')), 'symbol', 'value')

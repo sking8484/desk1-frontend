@@ -39,7 +39,7 @@ spec1.transform = [{"calculate":"datum.value-(-1)", "as":"posVal"},{
 },
 {"calculate":"datum.CumulativePerf/datum.FirstIndexVal - 1", "as":"indexedPerf"},
 {"calculate":"utcFormat(datum.date, '%b %e, %Y')", "as":"Date (Formatted)"}]
-spec1.title = "DeskOne Cumulative Performance"
+
 
 spec1.data = {"name":"data"}
 

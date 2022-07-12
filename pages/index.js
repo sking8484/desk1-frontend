@@ -27,7 +27,7 @@ export default function Home(props) {
   }
 
   var width = (8/10);
-  var height = (8/10);
+  var height = (7/10);
   var data = {"data":props.data}
 
   return(
