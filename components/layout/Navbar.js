@@ -23,6 +23,11 @@ export default function Navbar() {
               <a>Positioning</a>
             </Link>
           </li>
+          <li>
+            <Link href = '/securities'>
+              <a>Securities</a>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
