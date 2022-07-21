@@ -8,7 +8,7 @@ export default function Securities(props) {
 
   let pageDescription = {
     'title':"Securities",
-    "description":[`Want to figure out why we hold a certain security?`]}
+    "description":[`Want to figure out why we hold a certain security? Do your research below`]}
 
     return (
       <>
