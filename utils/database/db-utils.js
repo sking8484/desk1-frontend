@@ -12,3 +12,11 @@ export async function getRecentTimeSeries(tableName, dateCol) {
   return result.map(v => Object.assign({}, v));
 }
 
+export async function getRecentVariancePredictions() {
+  const query = `SELECT p.date, p.symbol, p.value as preds, v.value as variance
+                FROM predictionsTable p inner join varianceTable v on p.symbol = v.symbol
+                where p.date = (select max(p.date) from predictionsTable p)`
+  var result = await executeQuery({query:query})
+  return result.map(v => Object.assign({}, v))
+
+}

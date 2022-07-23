@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 import Pagestarter from '../../components/layout/Pagestarter'
 import Chart from '../../components/Charts/Chart'
-import { getRecentTimeSeries } from '../../utils/database/db-utils'
+import { getRecentVariancePredictions } from '../../utils/database/db-utils'
 import { predictionsSpec } from '../../components/Charts/Specs/securities/indexSpec';
 
 export default function Securities(props) {
@@ -25,8 +25,9 @@ export default function Securities(props) {
 
 
 export async function getServerSideProps() {
-  var predictionsTable = 'predictionsTable';
-  let currPreds = await getRecentTimeSeries(predictionsTable, 'date')
+
+  let currPreds = await getRecentVariancePredictions()
+  console.log(currPreds);
   return {
     props: {
       currPreds
