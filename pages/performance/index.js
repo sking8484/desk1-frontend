@@ -36,7 +36,7 @@ export default function Performance(props) {
         </div>
         <Linebreak></Linebreak>
         <div className = {styles.charts}>
-          <ChartwithForm data = {props.allData} spec = {factorPerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2022-06-21'}/>
+          <ChartwithForm data = {props.allData} spec = {factorPerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2022-01-01'}/>
         </div>
       </>
   )
