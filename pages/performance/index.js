@@ -2,7 +2,8 @@ import React from 'react';
 import Dateform from '../../components/Forms/Dateform'
 import getAllData from '../../utils/database/db-utils'
 import Chart from '../../components/Charts/Chart'
-import { homePerfSpec, meanPerfSpec, varPerfSpec } from '../../components/Charts/Specs/Performance/indexSpec'
+import Linebreak from '../../components/layout/Linebreak'
+import { homePerfSpec, factorPerfSpec } from '../../components/Charts/Specs/Performance/indexSpec'
 import { makeStationary, concatData, pivotData, changeToCumulative, indexToOne, sortTimeSeries, getCols, changeColumnNames } from '../../utils/data-utils'
 import styles from './index.module.css'
 import Pagestarter from '../../components/layout/Pagestarter'
@@ -18,7 +19,7 @@ let COL_MAPS = {
 export default function Performance(props) {
 
 
-  const pageInfo = {'title':"Relative Performance",
+  const pageInfo = {'title':"Performance",
     "description":[
       `We're doing well, but how do we compare? Scroll down to explore`,
       `Data indexed to one from start date. This allows us to better compare two or more
@@ -31,12 +32,11 @@ export default function Performance(props) {
       <>
         <Pagestarter pageInfo = {pageInfo}/>
         <div className = {styles.charts}>
-          <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true}/>
-          <div className = {styles.mvCharts}>
-            <Chart dataObj = {{'data':props.stationaryData}} specObj = {meanPerfSpec} widthMult = {3/10} heightMult = {3/10}/>
-            <Chart dataObj = {{'data':props.stationaryData}} specObj = {varPerfSpec} widthMult = {3/10} heightMult = {3/10}/>
-          </div>
-
+          <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2022-06-21'}/>
+        </div>
+        <Linebreak></Linebreak>
+        <div className = {styles.charts}>
+          <ChartwithForm data = {props.allData} spec = {factorPerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2022-06-21'}/>
         </div>
       </>
   )
@@ -47,8 +47,7 @@ export async function getServerSideProps(){
   let factorTable = 'factorTable';
   let perfData = await getAllData(perfTable);
   let factorData = await getAllData(factorTable);
-  var symbolsToKeep = ['OEF', 'SPY', 'URTH'];
-  factorData = factorData.filter(v => symbolsToKeep.includes(v.symbol));
+
 
   let perfCumulative = changeToCumulative(perfData, 'value');
   var concatedData = concatData(factorData, perfCumulative)
@@ -58,12 +57,15 @@ export async function getServerSideProps(){
   indexedData = indexedData.map(v => ({...v, 'date':v['date'].toISOString().slice(0,10)}))
 
   indexedData = changeColumnNames(indexedData, 'symbol', COL_MAPS)
-  let stationaryData = makeStationary(indexedData, 'symbol', 'value');
+  let allData = indexedData
+  let symbolsToKeep = Object.values(COL_MAPS)
+  indexedData = indexedData.filter(v => symbolsToKeep.includes(v.symbol))
 
+  // factorData = factorData.filter(v => symbolsToKeep.includes(v.symbol));
   return {
     props : {
       indexedData,
-      stationaryData
+      allData
     }
   }
 }

@@ -1,0 +1,27 @@
+.weightChartContainer {
+  min-height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.predictionsContainer {
+  min-height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.posContainer {
+  margin: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.corrContainer {
+  margin: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

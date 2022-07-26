@@ -15,17 +15,12 @@ export default function Navbar() {
         <ul className = {styles.option_list}>
           <li>
             <Link href = '/performance'>
-              <a>Relative Performance</a>
+              <a>Performance</a>
             </Link>
           </li>
           <li>
-            <Link href = '/positioning'>
-              <a>Positioning</a>
-            </Link>
-          </li>
-          <li>
-            <Link href = '/securities'>
-              <a>Securities</a>
+            <Link href = '/portfolio'>
+              <a>Portfolio</a>
             </Link>
           </li>
         </ul>

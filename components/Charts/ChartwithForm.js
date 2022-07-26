@@ -11,13 +11,13 @@ requires props to be passes a data element that is time series,
    'value':''}
 */
 
-export default function ChartwithForm({data, spec, width, height, shouldIndex}) {
+export default function ChartwithForm({data, spec, width, height, shouldIndex, inputStart}) {
   console.log(data);
   const [myData, setData] = React.useState(
     shouldIndex ? indexToOne(data.filter(
-      row => new Date(row['date']) >= new Date('2020-01-01')), 'symbol', 'value')
+      row => new Date(row['date']) >= new Date(inputStart || '2020-01-01')), 'symbol', 'value')
     : data.filter(
-      row => new Date(row['date']) >= new Date('2020-01-01')
+      row => new Date(row['date']) >= new Date(inputStart || '2020-01-01')
     )
   );
   async function submitInput(input) {
@@ -32,7 +32,7 @@ export default function ChartwithForm({data, spec, width, height, shouldIndex}) 
     }
 
     if (startDate.toString() === 'Invalid Date' || endDate.toString() === 'Invalid Date') {
-      startDate = new Date('2020-01-01');
+      startDate = new Date(inputStart || '2020-01-01');
       endDate = new Date();
     }
 
@@ -60,7 +60,7 @@ export default function ChartwithForm({data, spec, width, height, shouldIndex}) 
 
   return (
     <div className = {styles.perfContainer}>
-      <Dateform submit = {submitInput} data = {myData}/>
+      <Dateform submit = {submitInput} data = {myData} startDate = {inputStart}/>
       <Chart
         specObj = {spec}
         dataObj = {{"data":myData}}

@@ -88,7 +88,7 @@ export default function Dateform(props) {
           <input
             type = "text"
             id = "startDate"
-            placeholder = "  start date: 2020-01-01"
+            placeholder = {`  start date: ${props.startDate || '2020-01-01'}`}
             className = {styles.startDate}
             name = "startDate"
             value = {formInput.startDate}
