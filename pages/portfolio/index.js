@@ -26,7 +26,7 @@ export default function Positioning(props) {
         </div>
         <Linebreak/>
         <div className = {styles.corrContainer}>
-          <Chart specObj = {correlationsSpec} dataObj = {{'data':props.correlationsData}} widthMult = {8/10} heightMult = {15/10}/>
+          <Chart specObj = {correlationsSpec} dataObj = {{'data':props.correlationsData}} widthMult = {8/10} heightMult = {6/10}/>
         </div>
 
       </div>
@@ -41,7 +41,8 @@ export async function getServerSideProps() {
 
   let weightsData = await getRecentTimeSeries(weightsTable, 'date');
   let correlationsData = await getRecentTimeSeries(corrTable, 'date');
-  console.log(correlationsData)
+  let currHoldings = weightsData.filter(v => v.value > 0).map(v => v.symbol);
+  correlationsData = correlationsData.filter(v => currHoldings.includes(v.symbol) && currHoldings.includes(v.symbol2));
 
   return {
     props : {
