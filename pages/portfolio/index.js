@@ -26,7 +26,7 @@ export default function Positioning(props) {
         </div>
         <Linebreak/>
         <div className = {styles.corrContainer}>
-          <Chart specObj = {correlationsSpec} dataObj = {{'data':props.correlationsData}} widthMult = {8/10} heightMult = {6/10}/>
+          <Chart specObj = {correlationsSpec} dataObj = {{'data':props.correlationsData}} widthMult = {7/10} heightMult = {6/10}/>
         </div>
 
       </div>
