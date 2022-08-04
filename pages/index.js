@@ -1,6 +1,5 @@
 import styles from './index.module.css'
 import Hometitle from '../components/layout/Hometitle'
-import getAllData from '../utils/database/db-utils'
 import Chart from '../components/Charts/Chart'
 import spec from '../components/Charts/Specs/indexSpec'
 import Homelatex from '../components/latex/Homelatex';
@@ -10,25 +9,21 @@ import React from 'react';
 
 
 
-export default function Home(props) {
+export default function Home() {
 
   const equationRef = React.useRef(null);
   const infoRef = React.useRef(null);
-  const perfRef = React.useRef(null);
+  const foundersRef = React.useRef(null);
 
   function executeScroll(refIdent) {
     if (refIdent === 'eq') {
       equationRef.current.scrollIntoView();
     } else if (refIdent === 'info') {
       infoRef.current.scrollIntoView();
-    } else if (refIdent === 'perf') {
-      perfRef.current.scrollIntoView();
+    } else if (refIdent === 'founders') {
+      foundersRef.current.scrollIntoView();
     }
   }
-
-  var width = (8/10);
-  var height = (7/10);
-  var data = {"data":props.data}
 
   return(
   <>
@@ -44,24 +39,12 @@ export default function Home(props) {
     <div className = {styles.latexContainer} ref = {equationRef}>
       <Homelatex/>
     </div>
-    <div ref = {perfRef} className = {styles.homePerf}>
+    <div ref = {foundersRef} className = {styles.homePerf}>
       <div className = {'large-title'}>
-        Our Performance
+        Our Founders
       </div>
-      <Chart specObj = {spec} dataObj = {data} widthMult = {width} heightMult = {height}/>
     </div>
 
   </>
   )
-}
-
-
-export async function getServerSideProps() {
-  let tableName = "perfTable";
-  let data = await getAllData(tableName);
-  return {
-    props : {
-      data
-    }
-  }
 }
