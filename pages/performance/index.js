@@ -34,10 +34,7 @@ export default function Performance(props) {
         <div className = {styles.charts}>
           <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2022-06-21'}/>
         </div>
-        <Linebreak></Linebreak>
-        <div className = {styles.charts}>
-          <ChartwithForm data = {props.allData} spec = {factorPerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2021-01-01'}/>
-        </div>
+
 
       </>
   )
@@ -54,22 +51,21 @@ export async function getServerSideProps(){
   let perfCumulative = changeToCumulative(perfData, 'value');
   var concatedData = concatData(factorData, perfCumulative)
   let sortedData = sortTimeSeries(concatedData, 'date')
-
+  sortedData = changeColumnNames(sortedData, 'symbol', COL_MAPS)
+  let symbolsToKeep = Object.values(COL_MAPS)
+  sortedData = sortedData.filter(v => symbolsToKeep.includes(v.symbol))
 
   let indexedData = indexToOne(sortedData, 'symbol','value')
   indexedData = indexedData.map(v => ({...v, 'date':v['date'].toISOString().slice(0,10)}))
 
-  indexedData = changeColumnNames(indexedData, 'symbol', COL_MAPS)
-  let allData = indexedData
-  let symbolsToKeep = Object.values(COL_MAPS)
-  indexedData = indexedData.filter(v => symbolsToKeep.includes(v.symbol))
-  allData = allData.filter(v => !symbolsToKeep.includes(v.symbol))
 
-  // factorData = factorData.filter(v => symbolsToKeep.includes(v.symbol));
+
+
+  factorData = factorData.filter(v => symbolsToKeep.includes(v.symbol));
   return {
     props : {
       indexedData,
-      allData,
+      //allData,
 
     }
   }
