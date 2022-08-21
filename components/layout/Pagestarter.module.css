@@ -6,7 +6,7 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  height: 98vh;
+  height: 100vh;
   justify-content: center;
   text-align: left;
   padding-left: 5vw;
@@ -15,7 +15,7 @@
 }
 
 .title {
-  width: 20%;
+  width: 50%;
   margin-top: -10vh;
   margin-bottom: 5vh;
 }

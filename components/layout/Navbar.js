@@ -5,7 +5,7 @@ import styles from './Navbar.module.css'
 
 export default function Navbar() {
   return (
-    <div className = {styles.container}>
+    <div className = {`${styles.container} `}>
       <div className = {`${styles.title}`}>
         <Link href = '/'>
           <a>DeskOne</a>
@@ -13,6 +13,11 @@ export default function Navbar() {
       </div>
       <div className = {`${styles.option_container}`}>
         <ul className = {styles.option_list}>
+          <li>
+            <Link href = '/about'>
+              <a>About</a>
+            </Link>
+          </li>
           <li>
             <Link href = '/performance'>
               <a>Performance</a>

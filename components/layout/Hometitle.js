@@ -7,12 +7,7 @@ export default function Hometitle(props) {
         DeskOne Trading
       </div>
       <div className = {`${styles.infoHeader} text`}>
-        A multi-dimensional approach to trading.
-      </div>
-      <div className = {styles.scrollList}>
-        <p className = 'text-link' onClick = {() => props.scrollFunc('info')}>What is DeskOne?</p>
-        <p className = 'text-link' onClick = {() => props.scrollFunc('eq')}>Our Equation</p>
-        <p className = 'text-link' onClick = {() => props.scrollFunc('founders')}>Our Founders</p>
+        Democratizing Quantitative Finance
       </div>
     </div>
   )

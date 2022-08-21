@@ -1,38 +1,42 @@
 import styles from "./Homeinfo.module.css"
 import Infobox from './Infobox'
+import Link from 'next/link'
+import Image from 'next/image'
 
-export default function Homeinfo() {
-  const benchmarkIcon = 'chart'
-  const benchmarkHeader = 'Low Cost Hedge Fund'
-  const benchmarkDescription = `
-    We are an S&P 100 benchmarked fund, charging 0.25% AUM per year. Scroll to the bottom
-    to see performance since inception
-  `
-
-  const weightsIcon = 'brain';
-  const weightsHeader = 'Quantitative Portfolio'
-  const weightsDescription = `
-    Quadratic Programming
-    is our main engine, with plans to have a Neural Network
-    output as a feed in to our optimization. See below for how we solve for portfolio weights
-  `
-
-  const dataIcon = 'data';
-  const dataHeader = 'Factor/Data Exploration';
-  const dataDescription = `We provide access to all the factors/data that we are using.
-    Use the Navigation Bar (top of page) to explore these features
-  `
+export default function HomeInfo({title, text,secondText, image, positioning}) {
   return (
     <div className = {styles.info}>
-      <div className = {'large-title'}>
-        What is DeskOne?
-      </div>
-      <div className = {styles.infoContainer}>
-        <Infobox icon = {benchmarkIcon} header = {benchmarkHeader} description = {benchmarkDescription}/>
-        <Infobox icon = {weightsIcon} header = {weightsHeader} description = {weightsDescription}/>
-        <Infobox icon = {dataIcon} header = {dataHeader} description = {dataDescription}/>
+      <div className = {positioning === 'left' ? styles.infoContainerLeft : styles.infoContainerRight}>
+        {positioning === 'left' ?
+        (<div className = {styles.textContainer}>
+          <div className = 'large-title'>{title}</div>
+          <div className = 'third-title'>{text}</div>
+          <div classNamne = 'third-title'></div>
+          <div classNamne = {styles.placeHolder}></div>
+        </div>
+        )
+        :
+        (<div className = {styles.textContainer}>
+          <Image src = {image}/>
+        </div>)}
+
+        {positioning === 'left' ?
+        (<div className = {styles.textContainer}>
+          <Image src = {image}/>
+        </div>
+        )
+        :
+        (<div className = {styles.textContainer}>
+          <div className = 'large-title'>{title}</div>
+          <div className = 'third-title'>{text}</div>
+          <div classNamne = 'third-title'></div>
+          <div classNamne = {styles.placeHolder}></div>
+        </div>)}
+
+
       </div>
     </div>
 
   )
+
 }

@@ -6,13 +6,10 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  margin-top: -5vh;
 
 }
 
-.infoHeader {
-  padding-bottom: 10vh;
-}
+
 
 .scrollList {
   display: flex;

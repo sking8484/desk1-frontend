@@ -23,7 +23,10 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:url" content="deskonetrading.com"/>
 
       </Head>
-      <Navbar />
+      <div className = 'globalNavbarContainer'>
+        <Navbar />
+      </div>
+
       <Component {...pageProps} />
       <Footer />
     </>

@@ -3,45 +3,22 @@ import Hometitle from '../components/layout/Hometitle'
 import Chart from '../components/Charts/Chart'
 import spec from '../components/Charts/Specs/indexSpec'
 import Homelatex from '../components/latex/Homelatex';
-import HomeInfo from '../components/layout/Homeinfo'
+import HomeInfo from '../components/layout/HomeInfo'
 import React from 'react';
+import whatIsDeskOne from '../public/whatIsD1.gif'
 
 
 
 
 export default function Home() {
 
-  const equationRef = React.useRef(null);
-  const infoRef = React.useRef(null);
-  const foundersRef = React.useRef(null);
 
-  function executeScroll(refIdent) {
-    if (refIdent === 'eq') {
-      equationRef.current.scrollIntoView();
-    } else if (refIdent === 'info') {
-      infoRef.current.scrollIntoView();
-    } else if (refIdent === 'founders') {
-      foundersRef.current.scrollIntoView();
-    }
-  }
 
   return(
   <>
     <div className = {styles.homeContainer}>
       <div className = {styles.homeTitle}>
-        <Hometitle scrollFunc = {executeScroll}/>
-      </div>
-
-    </div>
-    <div ref = {infoRef}>
-      <HomeInfo/>
-    </div>
-    <div className = {styles.latexContainer} ref = {equationRef}>
-      <Homelatex/>
-    </div>
-    <div ref = {foundersRef} className = {styles.homePerf}>
-      <div className = {'large-title'}>
-        Our Founders
+        <Hometitle />
       </div>
     </div>
 

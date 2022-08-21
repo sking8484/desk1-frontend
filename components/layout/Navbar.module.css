@@ -6,6 +6,7 @@
   padding-left: 5vw;
   background-color: #002046;
   width: 100vw;
+  position: sticky;
 }
 
 .option_list {
