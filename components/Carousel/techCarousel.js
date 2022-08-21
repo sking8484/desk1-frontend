@@ -10,8 +10,8 @@ import alpacaMarkets from '../../public/alpacaMarkets.png'
 import digOcean from '../../public/digOcean.jpeg'
 import fastAPI from '../../public/fastApi.png'
 import nextjs from '../../public/nextjs.png'
-import react from '../../public/react.jpeg'
-import python from '../../public/python.webp'
+import react from '../../public/react.png'
+import python from '../../public/python.png'
 
 export default function CarouselComponent (){
   const getConfigurableProps = () => ({
