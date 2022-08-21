@@ -3,7 +3,6 @@ import Hometitle from '../components/layout/Hometitle'
 import Chart from '../components/Charts/Chart'
 import spec from '../components/Charts/Specs/indexSpec'
 import Homelatex from '../components/latex/Homelatex';
-import HomeInfo from '../components/layout/HomeInfo'
 import React from 'react';
 import whatIsDeskOne from '../public/whatIsD1.gif'
 
