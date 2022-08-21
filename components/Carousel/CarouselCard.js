@@ -7,7 +7,7 @@ export default function CarouselCard({img, title, description, link}) {
       <div className = {styles.imgContainer}>
         <a href = {link}><Image layout = 'responsive' src = {img} className = {styles.carouselImg}/></a>
       </div>
-      <div classname = {styles.body}>
+      <div className = {styles.body}>
         <div className = {styles.title}>
             {title}
           </div>
