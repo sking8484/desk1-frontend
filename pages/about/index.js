@@ -1,6 +1,6 @@
 
 import Pagestarter from '../../components/layout/Pagestarter'
-import HomeInfo from '../../components/layout/HomeInfo'
+import HomeInfo from '../../components/layout/Homeinfo'
 import React from 'react';
 import whatIsDeskOne from '../../public/whatIsD1.gif'
 
