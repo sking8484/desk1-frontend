@@ -5,7 +5,7 @@ import spec from '../components/Charts/Specs/indexSpec'
 import Homelatex from '../components/latex/Homelatex';
 import React from 'react';
 import whatIsDeskOne from '../public/whatIsD1.gif'
-
+import Carousel from '../components/Carousel/techCarousel'
 
 
 
@@ -20,6 +20,7 @@ export default function Home() {
         <Hometitle />
       </div>
     </div>
+    <Carousel/>
 
   </>
   )
