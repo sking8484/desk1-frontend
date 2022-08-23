@@ -3,32 +3,32 @@ import Infobox from './Infobox'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function HomeInfo({title, text,secondText, image, positioning}) {
+export default function HomeInfo(props) {
   return (
     <div className = {styles.info}>
-      <div className = {positioning === 'left' ? styles.infoContainerLeft : styles.infoContainerRight}>
-        {positioning === 'left' ?
+      <div className = {props.info.positioning === 'left' ? styles.infoContainerLeft : styles.infoContainerRight}>
+        {props.info.positioning === 'left' ?
         (<div className = {styles.textContainer}>
-          <div className = 'large-title'>{title}</div>
-          <div className = 'third-title'>{text}</div>
+          <div className = 'large-title'>{props.info.title}</div>
+          {props.info.text.map(text =><div className = 'third-title'>{text}</div> )}
           <div classNamne = 'third-title'></div>
           <div classNamne = {styles.placeHolder}></div>
         </div>
         )
         :
         (<div className = {styles.textContainer}>
-          <Image src = {image}/>
+          <Image className = {styles.imageClass} src = {props.info.image}/>
         </div>)}
 
-        {positioning === 'left' ?
+        {props.info.positioning === 'left' ?
         (<div className = {styles.textContainer}>
-          <Image src = {image}/>
+          <Image className = {styles.imageClass} src = {props.info.image}/>
         </div>
         )
         :
         (<div className = {styles.textContainer}>
-          <div className = 'large-title'>{title}</div>
-          <div className = 'third-title'>{text}</div>
+          <div className = 'large-title'>{props.info.title}</div>
+          {props.info.text.map(text =><div className = 'third-title'>{text}</div> )}
           <div classNamne = 'third-title'></div>
           <div classNamne = {styles.placeHolder}></div>
         </div>)}
