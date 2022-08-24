@@ -14,8 +14,8 @@ export default function Navbar() {
       <div className = {`${styles.option_container}`}>
         <ul className = {styles.option_list}>
           <li>
-            <Link href = '/about'>
-              <a>About</a>
+            <Link href = '/strategy'>
+              <a>Strategy</a>
             </Link>
           </li>
           <li>

@@ -9,7 +9,7 @@ export default function HomeInfo(props) {
       <div className = {props.info.positioning === 'left' ? styles.infoContainerLeft : styles.infoContainerRight}>
         {props.info.positioning === 'left' ?
         (<div className = {styles.textContainer}>
-          <div className = 'large-title'>{props.info.title}</div>
+          <div id = {props.info.boxId}className = 'large-title'>{props.info.title}</div>
           {props.info.text.map(text =><div key = {text[0]} className = 'third-title'>{text}</div> )}
           <div classNamne = 'third-title'></div>
           <div classNamne = {styles.placeHolder}></div>
@@ -27,7 +27,7 @@ export default function HomeInfo(props) {
         )
         :
         (<div className = {styles.textContainer}>
-          <div className = 'large-title'>{props.info.title}</div>
+          <div id = {props.info.boxId} className = 'large-title'>{props.info.title}</div>
           {props.info.text.map(text =><div key = {text[0]} className = 'third-title'>{text}</div> )}
           <div classNamne = 'third-title'></div>
           <div classNamne = {styles.placeHolder}></div>

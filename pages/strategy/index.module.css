@@ -1,0 +1,7 @@
+.Intro {
+  color: #002046;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+}
