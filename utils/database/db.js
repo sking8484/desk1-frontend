@@ -42,4 +42,5 @@ export default async function executeQuery({ query, values}) {
     }
     return results
   }
+  )
 }
