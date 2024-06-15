@@ -1,5 +1,5 @@
 const SocksConnection = require('socksjs');
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 const fixieUrl = process.env.FIXIE_SOCKS_HOST;
 const fixieValues = fixieUrl.split(new RegExp('[/(:\\/@)/]+'));
 
@@ -26,19 +26,20 @@ const mysqlConnPool = mysql.createPool({
   stream: fixieConnection
 });
 
-export default function executeQuery({ query, values}) {
-  mysqlConnPool.getConnection(function gotConnection(err, connection) {
+export async default function executeQuery({ query, values}) {
+  results = await mysqlConnPool.getConnection(function gotConnection(err, connection) {
 
-  if (err) throw err;
+    if (err) throw err;
 
-  if (values) {
-    let results = connection.query(query, values);
-    connection.release();
+    if (values) {
+      let results = connection.query(query, values);
+      connection.release();
+      return results
+    } else {
+      let results = await connectionn.query(query);
+      connection.release();
+      return results;
+    }
     return results
-  } else {
-    let results = await connectionn.query(query);
-    connection.release();
-    return results;
   }
-}
 }
