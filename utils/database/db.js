@@ -27,12 +27,12 @@ const mysqlConnPool = mysql.createPool({
 });
 
 export default async function executeQuery({ query, values}) {
-  results = await mysqlConnPool.getConnection(function gotConnection(err, connection) {
+  results = await mysqlConnPool.getConnection(async function gotConnection(err, connection) {
 
     if (err) throw err;
 
     if (values) {
-      let results = connection.query(query, values);
+      let results = await connection.query(query, values);
       connection.release();
       return results
     } else {
