@@ -28,22 +28,15 @@ export const mysqlConnPool = mysql.createPool({
 
 export default async function executeQuery({connection, query, values}) {
   console.log("DOING THING")
-  results = await connection.getConnection(async function gotConnection(err, connection) {
-    console.log(connection)
+  console.log(connection)
 
-    if (err) throw err;
-
-    if (values) {
-      let results = await connection.query(query, values);
-      connection.release();
-      return results
-    } else {
-      let results = await connectionn.query(query);
-      connection.release();
-      return results;
-    }
+  if (values) {
+    let results = await connection.query(query, values);
+    connection.release();
     return results
+  } else {
+    let results = await connectionn.query(query);
+    connection.release();
+    return results;
   }
-  )
-  return results
 }
