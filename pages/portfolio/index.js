@@ -1,11 +1,8 @@
 import styles from './index.module.css'
 import Chart from '../../components/Charts/Chart'
 import { indivSpec, sectorSpec, correlationsSpec } from '../../components/Charts/Specs/Portfolio/indexSpec';
-import { getRecentTimeSeries } from '../../utils/database/db-utils'
-import { mysqlConnPool } from '../../utils/database/db'
 import Linebreak from '../../components/layout/Linebreak'
 import Pagestarter from '../../components/layout/Pagestarter'
-import { getRecentVariancePredictions } from '../../utils/database/db-utils'
 import { predictionsSpec } from '../../components/Charts/Specs/Portfolio/indexSpec';
 export default function Positioning(props) {
 
@@ -29,6 +26,12 @@ export default function Positioning(props) {
 }
 
 export async function getServerSideProps() {
+  import { mysqlConnPool } from '../../utils/database/db'
+  import { getRecentVariancePredictions } from '../../utils/database/db-utils'
+  import { getRecentTimeSeries } from '../../utils/database/db-utils'
+
+
+
   console.log("STUFF")
   const conn = await mysqlConnPool.getConnection()
   var weightsTable = 'TEST_WEIGHTS_TABLE';
