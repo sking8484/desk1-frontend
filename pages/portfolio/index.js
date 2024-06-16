@@ -29,7 +29,7 @@ export default function Positioning(props) {
 export async function getServerSideProps() {
   
   const mysqlConnPool = require('../../utils/database/db')
-  const getRecentTimeSeries require('../../utils/database/db-utils')
+  const getRecentTimeSeries = require('../../utils/database/db-utils')
 
 
 
