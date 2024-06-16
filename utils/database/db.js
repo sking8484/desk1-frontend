@@ -1,6 +1,6 @@
 const SocksConnection = require('socksjs');
 const mysql = require('mysql2/promise');
-const fixieUrl = process.env.FIXIE_SOCKS_HOST;
+const fixieUrl = process.env.NEXT_PUBLIC_FIXIE_SOCKS_HOST;
 const fixieValues = fixieUrl.split(new RegExp('[/(:\\/@)/]+'));
 
 const mysqlServer = {
