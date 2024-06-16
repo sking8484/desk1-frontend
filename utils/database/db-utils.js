@@ -9,6 +9,7 @@ export default async function getAllData(connection, tableName) {
 export async function getRecentTimeSeries(connection, tableName, dateCol) {
   const query = `SELECT * FROM ${tableName} WHERE ${dateCol} = (SELECT max(${dateCol}) FROM ${tableName})`;
   var result = await executeQuery({connection:connection, query:query});
+  console.log(result)
   return result.map(v => Object.assign({}, v));
 }
 
