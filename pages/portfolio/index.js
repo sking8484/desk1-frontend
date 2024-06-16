@@ -37,7 +37,7 @@ export async function getServerSideProps() {
   let corrTable = 'correlationTable';
   //let currPreds = await getRecentVariancePredictions()
 
-  let weightsData = await db_utils.getRecentTimeSeries(conn, weightsTable, 'date');
+  let weightsData = await db_utils.getRecentTimeSeries(conn, weightsTable, 'date').filter(v => v.value > 0);
   console.log(weightsData)
   //let correlationsData = await getRecentTimeSeries(corrTable, 'date');
   let currHoldings = weightsData.filter(v => v.value > 0).map(v => v.symbol);
