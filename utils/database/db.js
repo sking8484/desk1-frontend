@@ -30,11 +30,11 @@ export default async function executeQuery({connection, query, values}) {
   console.log("DOING THING")
 
   if (values) {
-    let results = await connection.query(query, values);
+    let [results, fields] = await connection.query(query, values);
     connection.release();
     return results
   } else {
-    let results = await connection.query(query);
+    let [results, fields] = await connection.query(query);
     connection.release();
     return results;
   }
