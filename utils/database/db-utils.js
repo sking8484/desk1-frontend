@@ -1,14 +1,14 @@
 import executeQuery from './db'
 
-export default async function getAllData(tableName) {
+export default async function getAllData(connection, tableName) {
   const query = `SELECT * FROM ${tableName}`;
-  var result = await executeQuery({query:query});
+  var result = await executeQuery({connection:connection, query:query});
   return result.map(v => Object.assign({}, v));
 }
 
-export async function getRecentTimeSeries(tableName, dateCol) {
+export async function getRecentTimeSeries(connection, tableName, dateCol) {
   const query = `SELECT * FROM ${tableName} WHERE ${dateCol} = (SELECT max(${dateCol}) FROM ${tableName})`;
-  var result = await executeQuery({query:query});
+  var result = await executeQuery({connection:connection, query:query});
   return result.map(v => Object.assign({}, v));
 }
 

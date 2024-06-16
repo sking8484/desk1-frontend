@@ -19,16 +19,16 @@ const fixieConnection = new SocksConnection(mysqlServer, {
   port: fixieValues[3],
 });
 
-const mysqlConnPool = mysql.createPool({
+export const mysqlConnPool = mysql.createPool({
   user: dbUser,
   password: dbPassword,
   database: db,
   stream: fixieConnection
 });
 
-export default async function executeQuery({ query, values}) {
+export default async function executeQuery({connection, query, values}) {
   console.log("DOING THING")
-  results = await mysqlConnPool.getConnection(async function gotConnection(err, connection) {
+  results = await connection.getConnection(async function gotConnection(err, connection) {
     console.log(connection)
 
     if (err) throw err;
