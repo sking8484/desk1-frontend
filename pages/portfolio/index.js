@@ -28,6 +28,7 @@ export default function Positioning(props) {
 }
 
 export async function getServerSideProps() {
+  console.log("STUFF")
   var weightsTable = 'TEST_WEIGHTS_TABLE';
   let corrTable = 'correlationTable';
   //let currPreds = await getRecentVariancePredictions()
@@ -35,7 +36,7 @@ export async function getServerSideProps() {
   let weightsData = await getRecentTimeSeries(weightsTable, 'date');
   //let correlationsData = await getRecentTimeSeries(corrTable, 'date');
   let currHoldings = weightsData.filter(v => v.value > 0).map(v => v.symbol);
-  correlationsData = correlationsData.filter(v => currHoldings.includes(v.symbol) && currHoldings.includes(v.symbol2));
+  //correlationsData = correlationsData.filter(v => currHoldings.includes(v.symbol) && currHoldings.includes(v.symbol2));
 
   return {
     props : {
