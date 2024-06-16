@@ -28,6 +28,7 @@ const mysqlConnPool = mysql.createPool({
 
 export default async function executeQuery({ query, values}) {
   results = await mysqlConnPool.getConnection(async function gotConnection(err, connection) {
+    console.log(connection)
 
     if (err) throw err;
 
