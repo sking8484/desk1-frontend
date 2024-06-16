@@ -4,6 +4,7 @@ import { indivSpec, sectorSpec, correlationsSpec } from '../../components/Charts
 import Linebreak from '../../components/layout/Linebreak'
 import Pagestarter from '../../components/layout/Pagestarter'
 import { predictionsSpec } from '../../components/Charts/Specs/Portfolio/indexSpec';
+
 export default function Positioning(props) {
 
   let pageDescription = {
@@ -26,9 +27,9 @@ export default function Positioning(props) {
 }
 
 export async function getServerSideProps() {
-  import { mysqlConnPool } from '../../utils/database/db'
-  import { getRecentVariancePredictions } from '../../utils/database/db-utils'
-  import { getRecentTimeSeries } from '../../utils/database/db-utils'
+  
+  const mysqlConnPool = require('../../utils/database/db')
+  const getRecentTimeSeries require('../../utils/database/db-utils')
 
 
 
