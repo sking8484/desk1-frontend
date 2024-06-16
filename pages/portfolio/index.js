@@ -28,18 +28,16 @@ export default function Positioning(props) {
 
 export async function getServerSideProps() {
   
-  const mysqlConnPool = require('../../utils/database/db')
-  const getRecentTimeSeries = require('../../utils/database/db-utils')
-
-
+  const db = require('../../utils/database/db')
+  const db_utils = require('../../utils/database/db-utils')
 
   console.log("STUFF")
-  const conn = await mysqlConnPool.getConnection()
+  const conn = await db.mysqlConnPool.getConnection()
   var weightsTable = 'TEST_WEIGHTS_TABLE';
   let corrTable = 'correlationTable';
   //let currPreds = await getRecentVariancePredictions()
 
-  let weightsData = await getRecentTimeSeries(conn, weightsTable, 'date');
+  let weightsData = await db_utils.getRecentTimeSeries(conn, weightsTable, 'date');
   //let correlationsData = await getRecentTimeSeries(corrTable, 'date');
   let currHoldings = weightsData.filter(v => v.value > 0).map(v => v.symbol);
   //correlationsData = correlationsData.filter(v => currHoldings.includes(v.symbol) && currHoldings.includes(v.symbol2));
