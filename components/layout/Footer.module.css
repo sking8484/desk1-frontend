@@ -3,7 +3,7 @@
   font-size: xx-small;
   min-height: 5vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }

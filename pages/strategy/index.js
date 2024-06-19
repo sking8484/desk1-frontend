@@ -23,6 +23,8 @@ let optimizationText2 = 'This program utilizes Quadratic Programming to find the
 
 let optimizationText3 = 'We currently bound our weights between 0 and 10%, meaning no short-selling and no over concentration of a single security.'
 
+let tradePlacementTitle = 'Trade Placement'
+let tradePlacementText1 = 'After optimal weights are created, we send our orders over to our broker to place trades. We currently use Alpaca as our broker. Liquidations and sells are placed first to ensure no liquidity issues.'
 export default function Home() {
 
 
@@ -46,6 +48,13 @@ export default function Home() {
     'side':'left'
   }
 
+  const tradePlacement = {
+    'id':'tradeInfo',
+    'title':tradePlacementTitle,
+    'text':[tradePlacementText1],
+    'side':'right'
+  }
+
   const pageInfo = {'title':"Investing Is Hard.",
   "description":[
     `Most asset managers require an investment of more money than 95% of Americans have.`,
@@ -62,9 +71,10 @@ export default function Home() {
     <StrategyInfo info = {dataInfo}/>
     <StrategyInfo info = {netWorkInfo}/>
     <StrategyInfo info = {optimizationInfo}/>
+    <StrategyInfo info = {tradePlacement}/>
     <Xarrow start = 'dataInfo' end = 'netWorkInfo' startAnchor = 'bottom' endAnchor = 'top' color = '#002046' dashness = {true}/>
     <Xarrow start = 'netWorkInfo' end = 'optimizationInfo' startAnchor = 'bottom' endAnchor = 'top' color = '#002046' dashness = {true}/>
-
+    <Xarrow start = 'optimizationInfo' end = 'tradeInfo' startAnchor = 'bottom' endAnchor = 'top' color = '#002046' dashness = {true}/>
   </>
   )
 }
