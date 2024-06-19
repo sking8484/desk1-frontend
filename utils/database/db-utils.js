@@ -1,6 +1,6 @@
 import executeQuery from './db'
 
-export default async function getAllData(connection, tableName) {
+export async function getAllData(connection, tableName) {
   const query = `SELECT * FROM ${tableName}`;
   var result = await executeQuery({connection:connection, query:query});
   return result.map(v => Object.assign({}, v));
