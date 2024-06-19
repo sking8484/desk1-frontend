@@ -7,3 +7,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.footerContainer p {
+  font-size: 6px;
+}
