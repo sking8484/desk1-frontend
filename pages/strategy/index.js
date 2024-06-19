@@ -14,7 +14,7 @@ let dataInfoTitle = 'Retrieve Data'
 let dataInfoText = 'Each day, our rebalancing process begins with data collection. Our universe is the S&P100, so we get updated pricing for each of those stocks.'
 
 let networkInfoTitle = 'Price Predictions'
-let networkInfoText1 = `Once we've recieved the data, we use an a prediction process that employes a technique called Multivariate Singular Specturm Analysis. This works by using a Singular Value Decomposition process to filter out unimportant price movements.`
+let networkInfoText1 = `Once we've recieved the data, we then use a prediction process that employes a technique called Multivariate Singular Specturm Analysis. This works by first using a Singular Value Decomposition process to filter out unimportant price movements, then using linear regression to predict on this transformed data.`
 
 
 let optimizationTitle = 'Portfolio Optimization'
