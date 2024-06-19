@@ -60,10 +60,6 @@ export async function getServerSideProps(){
   let indexedData = indexToOne(sortedData, 'symbol','value')
   indexedData = indexedData.map(v => ({...v, 'date':v['date'].toISOString().slice(0,10)}))
 
-
-
-
-  factorData = factorData.filter(v => symbolsToKeep.includes(v.symbol));
   return {
     props : {
       indexedData,
