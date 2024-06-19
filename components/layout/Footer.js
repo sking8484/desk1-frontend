@@ -9,7 +9,7 @@ export default function Footer() {
 
 Investing in financial markets involves risk, including the possible loss of principal. Past performance is not indicative of future results. You should conduct your own research and consult with a qualified financial advisor before making any investment decisions.
 
-By using this website, you acknowledge that the information is provided "as is" without any warranties of any kind. We disclaim all liability for any loss or damage of any kind arising out of the use of, or reliance on, the information provided, including but not limited to, any loss of profit, which may arise directly or indirectly from the use of or reliance on such information.
+By using this website, you acknowledge that the information is provided as is without any warranties of any kind. We disclaim all liability for any loss or damage of any kind arising out of the use of, or reliance on, the information provided, including but not limited to, any loss of profit, which may arise directly or indirectly from the use of or reliance on such information.
 
 The content on this website may be updated or changed at any time without notice. We are not obligated to update any information on this website and we do not guarantee that the information will be kept up-to-date.</p>
     </div>
