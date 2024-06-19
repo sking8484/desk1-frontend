@@ -1,6 +1,5 @@
 import React from 'react';
 import Dateform from '../../components/Forms/Dateform'
-import getAllData from '../../utils/database/db-utils'
 import Chart from '../../components/Charts/Chart'
 import Linebreak from '../../components/layout/Linebreak'
 import { homePerfSpec, factorPerfSpec } from '../../components/Charts/Specs/Performance/indexSpec'
@@ -41,16 +40,19 @@ export default function Performance(props) {
 }
 
 export async function getServerSideProps(){
-  let perfTable = 'perfTable';
-  let factorTable = 'factorTable';
-  let perfData = await getAllData(perfTable);
-  let factorData = await getAllData(factorTable);
+  const db = require('../../utils/database/db')
+  const db_utils = require('../../utils/database/db-utils')
+  const conn = await db.mysqlConnPool.getConnection()
+  let perfTable = 'TEST_PERF_TABLE';
+  //let factorTable = 'factorTable';
+  let perfData = await db_utils.getAllData(conn, perfTable);
+  //let factorData = await getAllData(factorTable);
 
 
 
   let perfCumulative = changeToCumulative(perfData, 'value');
-  var concatedData = concatData(factorData, perfCumulative)
-  let sortedData = sortTimeSeries(concatedData, 'date')
+  //var concatedData = concatData(factorData, perfCumulative)
+  let sortedData = sortTimeSeries(perfCumulative, 'date')
   sortedData = changeColumnNames(sortedData, 'symbol', COL_MAPS)
   let symbolsToKeep = Object.values(COL_MAPS)
   sortedData = sortedData.filter(v => symbolsToKeep.includes(v.symbol))
