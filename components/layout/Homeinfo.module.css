@@ -1,6 +1,6 @@
 .info {
   width: 100vw;
-  height: 90vh;
+  height: 100%;
   color: #002046;
   display: flex;
   flex-direction: column;
