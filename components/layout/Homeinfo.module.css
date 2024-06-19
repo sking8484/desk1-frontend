@@ -38,5 +38,11 @@
 
 
 .imageClass {
-  border-radius: 10px;
+  border-radius: 100% !important;
+  width: 50vw !important;
+  height: 60vh !important;
+  min-width: 0% !important;
+  max-width: 800px !important;
+  min-height: 0% !important;
+  max-height: 719px !important;
 }
