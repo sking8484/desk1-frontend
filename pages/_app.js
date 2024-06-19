@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:title" content="DeskOne Trading"/>
         <meta property="og:type" content="website" />
         <meta property="og:description" content="A multi-dimensional approach to trading."/>
-        <meta property="og:image" content="/Desk1Background.jpg"/>
+        <meta property="og:image" content="/deskonebackground.png"/>
         <meta property="og:url" content="deskonetrading.com"/>
 
       </Head>
