@@ -16,7 +16,7 @@
   grid-template-columns: 3fr 7fr;
   align-items: center;
   padding: 5vh 5vw 5vh 5vw;
-  height: 100%;
+  height: 100vh;
 
 }
 .infoContainerRight {
@@ -27,14 +27,14 @@
   grid-template-columns: 7fr 3fr;
   align-items: center;
   padding: 5vh 5vw 5vh 5vw;
-  height: 100%;
+  height: 100vh;
 }
 
 .textContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100%;
+  height: 100vh;
 }
 
 
