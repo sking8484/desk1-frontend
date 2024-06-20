@@ -9,7 +9,7 @@ import Pagestarter from '../../components/layout/Pagestarter'
 import ChartwithForm from '../../components/Charts/ChartwithForm'
 
 let COL_MAPS = {
-  "SPY":"S&P500 (SPY)",
+  "IVV":"S&P500 (SPY)",
   "OEF":"S&P100 (OEF)",
   "URTH":"MSCI World (URTH)",
   "pct_change":"DeskOne Portfolio"
@@ -31,7 +31,7 @@ export default function Performance(props) {
       <>
         <Pagestarter pageInfo = {pageInfo}/>
         <div className = {styles.charts}>
-          <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2022-06-21'}/>
+          <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2024-06-19'}/>
         </div>
 
 
@@ -44,15 +44,15 @@ export async function getServerSideProps(){
   const db_utils = require('../../utils/database/db-utils')
   const conn = await db.mysqlConnPool.getConnection()
   let perfTable = 'TEST_PERF_TABLE';
-  //let factorTable = 'factorTable';
+  let factorTable = 'TEST_FACTOR_TABLE';
   let perfData = await db_utils.getAllData(conn, perfTable);
-  //let factorData = await getAllData(factorTable);
+  let factorData = await db_utils.getAllData(factorTable);
 
 
 
   let perfCumulative = changeToCumulative(perfData, 'value');
-  //var concatedData = concatData(factorData, perfCumulative)
-  let sortedData = sortTimeSeries(perfCumulative, 'date')
+  var concatedData = concatData(factorData, perfCumulative)
+  let sortedData = sortTimeSeries(concatedData, 'date')
   sortedData = changeColumnNames(sortedData, 'symbol', COL_MAPS)
   let symbolsToKeep = Object.values(COL_MAPS)
   sortedData = sortedData.filter(v => symbolsToKeep.includes(v.symbol))
