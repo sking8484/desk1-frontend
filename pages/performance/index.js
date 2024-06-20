@@ -46,7 +46,7 @@ export async function getServerSideProps(){
   let perfTable = 'TEST_PERF_TABLE';
   let factorTable = 'TEST_FACTOR_TABLE';
   let perfData = await db_utils.getAllData(conn, perfTable);
-  let factorData = await db_utils.getAllData(factorTable);
+  let factorData = await db_utils.getAllData(conn, factorTable);
 
 
 
