@@ -16,7 +16,8 @@
   grid-template-columns: 3fr 7fr;
   align-items: center;
   padding: 5vh 5vw 5vh 5vw;
-  height: 85%;
+  height: 100%;
+
 }
 .infoContainerRight {
   width: 100vw;
