@@ -31,7 +31,7 @@ export default function Performance(props) {
       <>
         <Pagestarter pageInfo = {pageInfo}/>
         <div className = {styles.charts}>
-          <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2024-06-19'}/>
+          <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2024-06-14'}/>
         </div>
 
 
