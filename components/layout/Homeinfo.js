@@ -21,8 +21,24 @@ export default function HomeInfo(props) {
         </div>)}
 
         {props.info.positioning === 'left' ?
-        (<div className = {styles.textContainer}>
-          <Image className = {styles.imageClass} src = {props.info.image}/>
+        (<div className = {styles.imageOuterContainer}><div className = {styles.imageContainer}>
+            <div className = {styles.textStuff}>
+             <div className = 'large-title'>
+              26%</div> <div className = 'text'>Year to date returns </div>
+            </div>
+            <div className = {styles.textStuff}>
+             <div className = 'large-title'>
+              6%</div> <div className = 'text'>Year to date returns </div>
+            </div>
+            <div className = {styles.textStuff}>
+             <div className = 'large-title'>
+              18%</div> <div className = 'text'>Year to date returns </div> 
+            </div>
+            <div className = {styles.textStuff}>
+             <div className = 'large-title `${styles.textStuff}`'>
+              260%</div> <div className = 'text'>Year to date returns </div> 
+            </div>
+        </div>
         </div>
         )
         :
