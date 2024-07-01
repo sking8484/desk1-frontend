@@ -35,8 +35,8 @@ export default function HomeInfo(props) {
               {props.stats.mean_daily_risk}%</div> <div className = 'text'>Daily Risk</div> 
             </div>
             <div className = {styles.textStuff}>
-             <div className = 'large-title `${styles.textStuff}`'>
-              </div> {props.stats.num_positions}<div className = 'text'>Positions</div> 
+             <div className = 'large-title `${styles.textStuff}`'>{props.stats.num_positions}
+              </div> <div className = 'text'>Positions</div> 
             </div>
         </div>
         </div>
