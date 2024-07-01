@@ -48,14 +48,23 @@ export async function getServerSideProps() {
 
   let stats_data = await db_utils.getRecentTimeSeries(conn, stats_table, 'date');
   let sharpe_ratio = Math.round(stats_data.filter(v => v.symbol === "sharpe_ratio")[0]["value"]*100)/100
-  console.log(stats_data)
-  console.log(sharpe_ratio)
+  let returns_vs_index = Math.round(stats_data.filter(v => v.symbol === "returns_vs_index")[0]["value"]*100)/100
+  let num_positions = Math.round(stats_data.filter(v => v.symbol === "num_positions")[0]["value"])
+  let mean_daily_risk = Math.round(stats_data.filter(v => v.symbol === "mean_daily_risk")[0]["value"]*100)/100
+  //
+  let data = {
+    'sharpe_ratio':sharpe_ratio,
+    'returns_vs_index':returns_vs_index,
+    'num_positions':num_positions,
+    'mean_daily_risk':mean_daily_risk
+  }
+  console.log(data)
   //let correlationsData = await getRecentTimeSeries(corrTable, 'date');
   //correlationsData = correlationsData.filter(v => currHoldings.includes(v.symbol) && currHoldings.includes(v.symbol2));
 
   return {
     props : {
-      stats_data
+      data
       //currPreds,
       //correlationsData
     }
