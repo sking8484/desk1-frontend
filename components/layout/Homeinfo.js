@@ -24,7 +24,7 @@ export default function HomeInfo(props) {
         (<div className = {styles.imageOuterContainer}><div className = {styles.imageContainer}>
             <div className = {styles.textStuff}>
              <div className = 'large-title'>
-              26%</div> <div className = 'text'>Year to date returns </div>
+              {props.stats.returns_vs_index}%</div> <div className = 'text'>Rolling 1 Year returns vs SP500</div>
             </div>
             <div className = {styles.textStuff}>
              <div className = 'large-title'>

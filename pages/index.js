@@ -31,7 +31,7 @@ export default function Home(props) {
         <Hometitle />
       </div>
     </div>
-    <HomeInfo info = {firstInfo} stats = {props.stats_data}/>
+    <HomeInfo info = {firstInfo} stats = {props.data}/>
 
   </>
   )
