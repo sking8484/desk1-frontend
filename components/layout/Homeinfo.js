@@ -23,20 +23,20 @@ export default function HomeInfo(props) {
         {props.info.positioning === 'left' ?
         (<div className = {styles.imageOuterContainer}><div className = {styles.imageContainer}>
             <div className = {styles.textStuff}>
-             <div className = 'large-title'>
+             <div className = 'large-title `${styles.textStuff}`'>
               {props.stats.returns_vs_index}%</div> <div className = 'text'>Rolling 1 Year returns vs SP500</div>
             </div>
             <div className = {styles.textStuff}>
-             <div className = 'large-title'>
-              6%</div> <div className = 'text'>Year to date returns </div>
-            </div>
-            <div className = {styles.textStuff}>
-             <div className = 'large-title'>
-              18%</div> <div className = 'text'>Year to date returns </div> 
+             <div className = 'large-title `${styles.textStuff}`'>
+              {props.stats.sharpe_ratio}</div> <div className = 'text'>Rolling 1 Year Sharpe Ratio</div>
             </div>
             <div className = {styles.textStuff}>
              <div className = 'large-title `${styles.textStuff}`'>
-              260%</div> <div className = 'text'>Year to date returns </div> 
+              {props.stats.mean_daily_risk}%</div> <div className = 'text'>Daily Risk</div> 
+            </div>
+            <div className = {styles.textStuff}>
+             <div className = 'large-title `${styles.textStuff}`'>
+              </div> {props.stats.num_positions}<div className = 'text'>Positions</div> 
             </div>
         </div>
         </div>
