@@ -47,7 +47,7 @@ export async function getServerSideProps() {
   //let currPreds = await getRecentVariancePredictions()
 
   let stats_data = await db_utils.getRecentTimeSeries(conn, stats_table, 'date');
-  let sharpe_ratio = stats_data.filter(v => v.symbol === "sharpe_ratio")[0]
+  let sharpe_ratio = Math.round(stats_data.filter(v => v.symbol === "sharpe_ratio")[0]["value"]*100)/100
   console.log(stats_data)
   console.log(sharpe_ratio)
   //let correlationsData = await getRecentTimeSeries(corrTable, 'date');
