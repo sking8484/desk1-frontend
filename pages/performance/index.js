@@ -9,44 +9,48 @@ import Pagestarter from '../../components/layout/Pagestarter'
 import ChartwithForm from '../../components/Charts/ChartwithForm'
 
 let COL_MAPS = {
-  "IVV":"S&P500 (SPY)",
-  "OEF":"S&P100 (OEF)",
-  "URTH":"MSCI World (URTH)",
-  "pct_change":"DeskOne Portfolio"
+  "IVV": "S&P500 (SPY)",
+  "OEF": "S&P100 (OEF)",
+  "URTH": "MSCI World (URTH)",
+  "pct_change": "DeskOne Portfolio"
 }
 
 export default function Performance(props) {
 
 
-  const pageInfo = {'title':"Performance",
-    "description":[
+  const pageInfo = {
+    'title': "Performance",
+    "description": [
       `We're doing well, but how do we compare? Scroll down to explore`,
       `Data indexed to one from start date. This allows us to better compare two or more
       series by starting both from one`
-      ]
-    }
+    ]
+  }
 
 
   return (
-      <>
-        <Pagestarter pageInfo = {pageInfo}/>
-        <div className = {styles.charts}>
-          <ChartwithForm data = {props.indexedData} spec = {homePerfSpec} width = {8/10} height = {(7)/10} shouldIndex = {true} inputStart = {'2024-06-14'}/>
-        </div>
+    <>
+      <Pagestarter pageInfo={pageInfo} />
+      <div className={styles.charts}>
+        <ChartwithForm data={props.indexedData} spec={homePerfSpec} width={8 / 10} height={(7) / 10} shouldIndex={true} inputStart={'2024-06-14'} />
+      </div>
 
 
-      </>
+    </>
   )
 }
 
-export async function getServerSideProps(){
+export async function getServerSideProps() {
   const db = require('../../utils/database/db')
   const db_utils = require('../../utils/database/db-utils')
   const conn = await db.mysqlConnPool.getConnection()
   let perfTable = 'TEST_PERF_TABLE';
-  let factorTable = 'TEST_FACTOR_TABLE';
+  let factorTable = 'TEST_FACTOR_BARS_TABLE';
   let perfData = await db_utils.getAllData(conn, perfTable);
   let factorData = await db_utils.getAllData(conn, factorTable);
+  factorData = factorData.filter(v => v.bar_type === 'close');
+  factorData = factorData.map((x) => { return { 'date': x.date, 'symbol': x.symbol, 'value': x.value } });
+
 
 
 
@@ -57,11 +61,11 @@ export async function getServerSideProps(){
   let symbolsToKeep = Object.values(COL_MAPS)
   sortedData = sortedData.filter(v => symbolsToKeep.includes(v.symbol))
 
-  let indexedData = indexToOne(sortedData, 'symbol','value')
-  indexedData = indexedData.map(v => ({...v, 'date':v['date'].toISOString().slice(0,10)}))
+  let indexedData = indexToOne(sortedData, 'symbol', 'value')
+  indexedData = indexedData.map(v => ({ ...v, 'date': v['date'].toISOString().slice(0, 10) }))
 
   return {
-    props : {
+    props: {
       indexedData,
       //allData,
 
